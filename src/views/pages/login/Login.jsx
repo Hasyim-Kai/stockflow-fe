@@ -8,6 +8,7 @@ import { useLoginMutation } from 'src/api/auth.ts'
 import { CButton, CCard, CCardBody, CCardGroup, CCol, CContainer, CForm, CFormInput, CInputGroup, CInputGroupText, CRow, CAlert, } from '@coreui/react-pro'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import Loading from "src/components/global/loading/loading"
 
 const loginSchema = yup.object().shape({
   email: yup.string().required('Email wajib diisi!'),
@@ -22,37 +23,19 @@ const initialValues = {
 const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [login, { isLoading, isError, error }] = useLoginMutation()
+  const [login, { isLoading, isError, error, data }] = useLoginMutation()
 
   const handleFormSubmit = async (values,) => {
     try {
       const res = await login(values)
       if (res.data) {
-        if (res.data.role === 'MARKETING') navigate('/dashboard')
-        else if (
-          res.data.role === 'SALESREQUESTONLY' ||
-          res.data.role === 'SALESREQUEST' ||
-          res.data.role === 'SALESREQUESTNCUST' ||
-          res.data.role === 'SALESREQUESTNCUSTNSALESNOTE'
-        )
-          navigate('/dashboard-marketing')
-        else if (res.data.role === 'SALESEXTERNAL') navigate('/dashboard-marketing-external')
-        else if (res.data.role === 'PRODUCTION' || res.data.role === 'PRODUCTION1')
-          navigate('/produksi/sales-request')
-        else if (res.data.role === 'PRODUCTION2') navigate('/produksi/formula')
-        else if (res.data.role === 'ACCOUNTING') navigate('/transaksi/penjualan')
-        else navigate('/dashboard')
-
+        navigate(`/master-data/user`)
         dispatch(setLogin(res.data))
       }
     } catch (error) {
       console.log(error.message)
     }
   }
-
-  const loadingComponent = <div className="pt-3 text-center">
-    <div className="sk-spinner sk-spinner-pulse"></div>
-  </div>
 
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
@@ -106,7 +89,7 @@ const Login = () => {
                         )}
                         <CRow>
                           <CCol xs={6}>
-                            {isLoading ? loadingComponent
+                            {isLoading ? <Loading />
                               : <CButton type="submit" color="primary" className="px-4">
                                 Login
                               </CButton>}

@@ -1,5 +1,5 @@
 // @ts-ignore
-import { api } from 'src/store/api.jsx';
+import { api } from 'src/store/api.js';
 
 const authApi = api.injectEndpoints({
     overrideExisting: false,
@@ -10,10 +10,9 @@ const authApi = api.injectEndpoints({
                 method: 'POST',
                 body: values,
             }),
-            transformResponse: (rawResult: any) => {
-                return rawResult.data
-            },
-            invalidatesTags: [`User`]
+            // transformResponse: (rawResult: any, meta: any) => {
+            //     return rawResult.data
+            // },
         }),
     })
 })

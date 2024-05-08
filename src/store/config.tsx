@@ -2,13 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-// @ts-ignore
-import { api } from 'src/store/api.jsx';
+import { api } from 'src/store/api';
 // @ts-ignore
 import globalReducer from 'src/store/index';
 
 const persistConfig = {
-  key: 'wo-sumatra',
+  key: 'konsinyasi-distributor',
   storage,
   version: 1,
 }
