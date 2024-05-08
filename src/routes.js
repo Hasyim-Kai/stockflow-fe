@@ -62,7 +62,17 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const Invoice = React.lazy(() => import('./views/apps/invoicing/Invoice'))
 
+// PAGES
+// MASTER-DATA
+const MasterDataUserPage = React.lazy(() => import('src/pages/master-data/user'))
+const MasterDataAddUserPage = React.lazy(() => import('src/pages/master-data/user/add'))
+const MasterDataEditUserPage = React.lazy(() => import('src/pages/master-data/user/edit'))
+
+
 const routes = [
+  { path: '/master-data/user', name: 'User', element: MasterDataUserPage },
+  { path: '/master-data/user/add', name: 'Add User', element: MasterDataAddUserPage },
+  { path: '/master-data/user/edit/:id', name: 'Edit User', element: MasterDataEditUserPage },
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },

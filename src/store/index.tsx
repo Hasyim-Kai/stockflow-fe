@@ -7,17 +7,18 @@ export interface GlobalStateType {
 export interface StateType {
   sidebarShow: boolean
   asideShow: boolean
-  sidebarUnfoldable: boolean
   theme: 'default' | 'light' | 'dark'
   user: any
+  // confirmModalVisible: boolean
 }
 
 const initialState: StateType = {
   sidebarShow: true,
   asideShow: false,
-  sidebarUnfoldable: false,
   theme: 'default',
   user: null,
+
+  // confirmModalVisible: false,
 }
 
 export const globalSlice = createSlice({
@@ -33,15 +34,15 @@ export const globalSlice = createSlice({
     setSidebarShow: (state, action) => {
       state.sidebarShow = action.payload.sidebarShow
     },
-    setSidebarUnfoldable: (state, action) => {
-      state.sidebarUnfoldable = action.payload.sidebarUnfoldable
-    },
     setAsideShow: (state, action) => {
       state.asideShow = action.payload.asideShow
     },
     setTheme: (state, action) => {
       state.theme = action.payload.theme
     },
+    // setConfirmModal: (state, action) => {
+    //   state.confirmModalVisible = action.payload.confirmModal
+    // },
   },
 })
 
@@ -51,7 +52,7 @@ export const {
   setSidebarShow,
   setAsideShow,
   setTheme,
-  setSidebarUnfoldable,
+  // setConfirmModal,
 } = globalSlice.actions
 
 export default globalSlice.reducer

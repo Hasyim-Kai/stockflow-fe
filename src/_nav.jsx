@@ -1,56 +1,61 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import {
-  cilBell,
-  cilCalculator,
-  cilCalendar,
-  cilChartPie,
-  cilCursor,
-  cilDrop,
-  cilEnvelopeOpen,
-  cilGrid,
-  cilLayers,
-  cilMap,
-  cilNotes,
-  cilPencil,
-  cilPuzzle,
-  cilSpeedometer,
-  cilSpreadsheet,
-  cilStar,
-} from '@coreui/icons'
+import { cilUser, cilInstitution, cilDrink, cilBell, cilCalculator, cilCalendar, cilChartPie, cilCursor, cilDrop, cilEnvelopeOpen, cilGrid, cilLayers, cilMap, cilNotes, cilPencil, cilPuzzle, cilSpeedometer, cilSpreadsheet, cilStar, } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
 
 const _nav = [
   {
-    component: CNavItem,
-    name: 'Dashboard',
-    to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    badge: {
-      color: 'info-gradient',
-      text: 'NEW',
-    },
-  },
-  {
     component: CNavTitle,
-    name: 'Theme',
+    name: 'Master Data',
   },
   {
     component: CNavItem,
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    name: 'User',
+    to: '/master-data/user',
+    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
   },
   {
     component: CNavItem,
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    name: 'Outlet',
+    to: '/master-data/outlet',
+    icon: <CIcon icon={cilInstitution} customClassName="nav-icon" />,
   },
   {
-    component: CNavTitle,
-    name: 'Components',
+    component: CNavItem,
+    name: 'Product',
+    to: '/master-data/product',
+    icon: <CIcon icon={cilDrink} customClassName="nav-icon" />,
   },
+  // {
+  //   component: CNavItem,
+  //   name: 'Dashboard',
+  //   to: '/dashboard',
+  //   icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  //   badge: {
+  //     color: 'info-gradient',
+  //     text: 'NEW',
+  //   },
+  // },
+  // {
+  //   component: CNavTitle,
+  //   name: 'Theme',
+  // },
+  // {
+  //   component: CNavItem,
+  //   name: 'Colors',
+  //   to: '/theme/colors',
+  //   icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+  // },
+  // {
+  //   component: CNavItem,
+  //   name: 'Typography',
+  //   to: '/theme/typography',
+  //   icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+  // },
+  // {
+  //   component: CNavTitle,
+  //   name: 'Components',
+  // },
   {
     component: CNavGroup,
     name: 'Base',
