@@ -1,16 +1,14 @@
 import { CButton, CCard, CCardBody, CCardHeader, CCardTitle, CCol, CForm, CFormLabel, CFormSelect, CRow } from '@coreui/react-pro'
 // import CIcon from '@coreui/icons-react'
 import { Formik } from 'formik'
-import { useNavigate } from 'react-router-dom'
+import BackBtn from 'src/components/global/button/back-btn'
 import InputField from 'src/components/global/input/input-field'
+import Loading from 'src/components/global/loading/loading'
 import { userRoleList } from 'src/utils/constant/user-role'
 import useAddUserVm from './add-user-vm'
-import { cilArrowLeft } from '@coreui/icons'
-import CIcon from '@coreui/icons-react'
 
 export default function MasterDataAddUserPage() {
     const vm = useAddUserVm()
-    const nav = useNavigate()
 
     return <CCard className="mb-4">
         <CCardHeader>
@@ -19,10 +17,7 @@ export default function MasterDataAddUserPage() {
                     <CCardTitle className="fs-3 fw-semibold">Add User</CCardTitle>
                 </CCol>
                 <CCol xs="auto" className="ms-auto">
-                    <CButton color="secondary" onClick={() => nav(-1)}>
-                        <CIcon className='me-2' icon={cilArrowLeft} />
-                        Back
-                    </CButton>
+                    <BackBtn />
                 </CCol>
             </CRow>
         </CCardHeader>
@@ -31,7 +26,7 @@ export default function MasterDataAddUserPage() {
             <Formik onSubmit={vm.handleFormSubmit}
                 initialValues={vm.initialValues}
                 validationSchema={vm.loginSchema}>
-                {({ isSubmitting, values, errors, handleChange, handleSubmit }) => (
+                {({ values, errors, handleChange, handleSubmit }) => (
                     <CForm onSubmit={handleSubmit} className='d-flex flex-column gap-3'>
                         <div className="">
                             <InputField label='Nameame' type="name" name='name' placeholder="John Wick"
@@ -45,20 +40,21 @@ export default function MasterDataAddUserPage() {
                             <InputField label='password' type="password" name='password'
                                 error={errors.password} onChangeValue={handleChange} value={values.password} />
                         </div>
-                        <div>
+                        {/* THIS ONLY FOR ADMIN ROLE */}
+                        {vm.userRole === `ADMIN` && <div>
                             <CFormLabel >Role</CFormLabel>
                             <CFormSelect name='role' options={userRoleList}
                                 onChange={handleChange} value={values.role} />
-                        </div>
 
-                        {/* {isLoading ? loadingComponent
-                                : <CButton type="submit" color="primary" className="px-4">
-                                  Login
-                                </CButton>} */}
+                            {/* <CFormLabel >Outlet</CFormLabel>
+                            <CFormSelect name='Outlet' options={userOutletList}
+                                onChange={handleChange} value={values.Outlet} /> */}
+                        </div>}
 
-                        <CButton disabled={isSubmitting} type="submit" color="primary" className="px-4 mt-3">
-                            Submit
-                        </CButton>
+                        {vm.isLoading ? <Loading />
+                            : <CButton type="submit" color="primary" className="px-4 mt-3">
+                                Submit
+                            </CButton>}
                     </CForm>
                 )}
             </Formik>

@@ -73,6 +73,12 @@ const routes = [
   { path: '/master-data/user', name: 'User', element: MasterDataUserPage },
   { path: '/master-data/user/add', name: 'Add User', element: MasterDataAddUserPage },
   { path: '/master-data/user/edit/:id', name: 'Edit User', element: MasterDataEditUserPage },
+]
+
+const coreUiFeatures = [
+  { path: '/master-data/user', name: 'User', element: MasterDataUserPage },
+  { path: '/master-data/user/add', name: 'Add User', element: MasterDataAddUserPage },
+  { path: '/master-data/user/edit/:id', name: 'Edit User', element: MasterDataEditUserPage },
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },

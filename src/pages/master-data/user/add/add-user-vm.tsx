@@ -1,8 +1,16 @@
 // import * as yup from 'yup'
+import { useNavigate } from 'react-router-dom'
+import { useCreateUserMutation } from 'src/api/domain/user'
+import useStoreHelper from 'src/store/helper'
+import { handleErrMsg } from 'src/utils/helper/error-handler'
+import { ISwalFail, ISwalSuccess } from 'src/utils/helper/swal'
 import { object, string } from 'yup'
 
 export default function useAddUserVm() {
-    //   const [login, { isLoading, isError, error }] = useLoginMutation()
+    const { userRole } = useStoreHelper()
+    const [createUser, { isLoading }] = useCreateUserMutation()
+    const nav = useNavigate()
+
     const loginSchema = object().shape({
         name: string().required('Nama wajib diisi!'),
         email: string().required('Email wajib diisi!'),
@@ -17,15 +25,19 @@ export default function useAddUserVm() {
         role: 'EMPLOYEE',
     }
 
-    const handleFormSubmit = async (values: any) => {
-        try {
-            console.log(values)
-        } catch (error) {
-        }
+    const handleFormSubmit = (values: any) => {
+        createUser(values).unwrap().then(() => {
+            ISwalSuccess()
+            nav(-1)
+        }).catch((error) => {
+            ISwalFail(handleErrMsg(error))
+        })
     }
 
     return {
         loginSchema, initialValues, handleFormSubmit,
+        userRole,
+        isLoading,
 
     }
 }

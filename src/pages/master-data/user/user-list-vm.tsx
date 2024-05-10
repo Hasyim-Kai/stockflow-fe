@@ -1,33 +1,39 @@
-// import * as yup from 'yup'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { GlobalStateType } from 'src/store'
-// import { toggleConfirmModal } from 'src/store/index'
-import Swal from 'sweetalert2'
+import { useDelUserMutation } from 'src/api/domain/user';
+import { ISwalConfirm, ISwalFail, ISwalSuccess } from 'src/utils/helper/swal';
 
 export default function useUserVm() {
-    //   const [login, { isLoading, isError, error }] = useLoginMutation()
+    // const { userRole } = useStoreHelper()
+    const [delUser, { }] = useDelUserMutation()
+
+    const columns = [
+        {
+            key: 'name',
+        },
+        {
+            key: 'email',
+        },
+        {
+            key: 'role',
+        },
+        {
+            key: 'outlet',
+        },
+        {
+            key: 'actions',
+            filter: false,
+            sorter: false,
+        },
+    ]
+
     const onDel = (id: string) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!" + id,
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6", // blue
-            cancelButtonColor: "#d33", // red
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
-            }
-        });
+        ISwalConfirm(() => {
+            delUser({ id: id || `` }).unwrap().then(() => ISwalSuccess())
+                .catch(() => ISwalFail())
+        })
     }
 
     return {
-        onDel,
+        onDel, columns,
 
 
     }
