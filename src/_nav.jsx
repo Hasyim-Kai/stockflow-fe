@@ -1,32 +1,52 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import { cilUser, cilInstitution, cilDrink, cilBell, cilCalculator, cilCalendar, cilChartPie, cilCursor, cilDrop, cilEnvelopeOpen, cilGrid, cilLayers, cilMap, cilNotes, cilPencil, cilPuzzle, cilSpeedometer, cilSpreadsheet, cilStar, } from '@coreui/icons'
+import { cilUser, cilDollar, cilInstitution, cilDrink, cilBell, cilCalculator, cilCalendar, cilChartPie, cilCursor, cilDrop, cilEnvelopeOpen, cilGrid, cilLayers, cilMap, cilNotes, cilPencil, cilPuzzle, cilSpeedometer, cilSpreadsheet, cilStar, } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
 
 const _nav = [
   {
-    component: CNavTitle,
+    component: CNavGroup,
     name: 'Master Data',
+    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'User',
+        to: '/master-data/user',
+        icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Outlet',
+        to: '/master-data/outlet',
+        icon: <CIcon icon={cilInstitution} customClassName="nav-icon" />,
+      },
+      {
+        component: CNavItem,
+        name: 'Product',
+        to: '/master-data/product',
+        icon: <CIcon icon={cilDrink} customClassName="nav-icon" />,
+      },
+    ],
   },
   {
-    component: CNavItem,
-    name: 'User',
-    to: '/master-data/user',
-    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Outlet',
-    to: '/master-data/outlet',
-    icon: <CIcon icon={cilInstitution} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Product',
-    to: '/master-data/product',
-    icon: <CIcon icon={cilDrink} customClassName="nav-icon" />,
+    component: CNavGroup,
+    name: 'Transactions',
+    icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'User',
+        to: '/master-data/user',
+        icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
+      },
+    ],
   },
 ]
+
+
+
+
 
 const _featuresNav = [
   {

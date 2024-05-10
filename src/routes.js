@@ -63,16 +63,33 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 const Invoice = React.lazy(() => import('./views/apps/invoicing/Invoice'))
 
 // PAGES
-// MASTER-DATA
+// MASTER-DATA USER
 const MasterDataUserPage = React.lazy(() => import('src/pages/master-data/user'))
 const MasterDataAddUserPage = React.lazy(() => import('src/pages/master-data/user/add'))
 const MasterDataEditUserPage = React.lazy(() => import('src/pages/master-data/user/edit'))
+// MASTER-DATA OUTLET
+const MasterDataOutletPage = React.lazy(() => import('src/pages/master-data/outlet'))
+const MasterDataAddOutletPage = React.lazy(() => import('src/pages/master-data/outlet/add'))
+const MasterDataEditOutletPage = React.lazy(() => import('src/pages/master-data/outlet/edit'))
+// MASTER-DATA PRODUCT
+const MasterDataProductPage = React.lazy(() => import('src/pages/master-data/product'))
+const MasterDataAddProductPage = React.lazy(() => import('src/pages/master-data/product/add'))
+const MasterDataEditProductPage = React.lazy(() => import('src/pages/master-data/product/edit'))
 
 
 const routes = [
+  // MASTER-DATA USER
   { path: '/master-data/user', name: 'User', element: MasterDataUserPage },
   { path: '/master-data/user/add', name: 'Add User', element: MasterDataAddUserPage },
   { path: '/master-data/user/edit/:id', name: 'Edit User', element: MasterDataEditUserPage },
+  // MASTER-DATA PRODUCT
+  { path: '/master-data/outlet', name: 'Outlet', element: MasterDataOutletPage },
+  { path: '/master-data/outlet/add', name: 'Add Outlet', element: MasterDataAddOutletPage },
+  { path: '/master-data/outlet/edit/:id', name: 'Edit Outlet', element: MasterDataEditOutletPage },
+  // MASTER-DATA PRODUCT
+  { path: '/master-data/product', name: 'Product', element: MasterDataProductPage },
+  { path: '/master-data/product/add', name: 'Add Product', element: MasterDataAddProductPage },
+  { path: '/master-data/product/edit/:id', name: 'Edit Product', element: MasterDataEditProductPage },
 ]
 
 const coreUiFeatures = [

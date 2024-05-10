@@ -15,9 +15,8 @@ export const api = createApi({
   tagTypes: [
     'Auth',
     'User',
-    'Products',
-    'ProductStocks',
-    'ProductStockMutation',
+    `Outlet`,
+    'Product',
   ],
   endpoints: (build: any) => ({
     //   getMaterial: build.query({
