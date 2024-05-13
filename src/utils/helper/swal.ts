@@ -15,7 +15,7 @@ const initialConfirmValue: ConfirmProps = {
     text: "You won't be able to revert this!",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: "Yes, confirm it!",
 }
 
 export const ISwalConfirm = (cb: () => void = () => { }, props: ConfirmProps = initialConfirmValue,) => {
