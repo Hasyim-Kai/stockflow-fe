@@ -12,19 +12,30 @@ import { sygnet } from 'src/assets/brand/sygnet'
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 import SentiumLogo from 'src/assets/brand/sentium_logo.png'
+import useStoreHelper from 'src/store/helper'
+import { UserRoleEnum } from 'src/utils/constant/user-role.ts'
 
 // sidebar nav config
-import navigation from '../_nav'
+import { adminNav } from 'src/sidebar-nav/admin.tsx'
+import { ownerNav } from 'src/sidebar-nav/owner.tsx'
+import { employeeNav } from 'src/sidebar-nav/employee.tsx'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
-  const unfoldable = useSelector((state) => state.global.sidebarUnfoldable)
+  const { userRole } = useStoreHelper()
   const sidebarShow = useSelector((state) => state.global.sidebarShow)
+
+  const authorizationNav = () => {
+    if (userRole === UserRoleEnum.ADMIN) { return <AppSidebarNav items={adminNav} /> }
+    else if (userRole === UserRoleEnum.OUTLET_OWNER) { return <AppSidebarNav items={ownerNav} /> }
+    else if (userRole === UserRoleEnum.EMPLOYEE) { return <AppSidebarNav items={employeeNav} /> }
+    else { return <AppSidebarNav items={adminNav} /> }
+  }
 
   return (
     <CSidebar
       position="fixed"
-      unfoldable={unfoldable}
+      unfoldable={false}
       visible={sidebarShow}
       onVisibleChange={(visible) => {
         dispatch({ type: 'set', sidebarShow: visible })
@@ -32,11 +43,12 @@ const AppSidebar = () => {
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
         <img alt="logo" src={SentiumLogo} height={40} />
+        {/* <p>{userRole}-{UserRoleEnum.ADMIN}</p> */}
         <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={navigation} />
+          {authorizationNav()}
         </SimpleBar>
       </CSidebarNav>
       {/* <CSidebarToggler
