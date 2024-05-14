@@ -1,4 +1,4 @@
-import { useDelUserMutation } from 'src/api/domain/user';
+import { useDelUserMutation } from 'src/api/domain/master-data/user';
 import { ISwalConfirm, ISwalFail, ISwalSuccess } from 'src/utils/helper/swal';
 
 export default function useUserVm() {

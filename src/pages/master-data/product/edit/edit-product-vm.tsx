@@ -1,6 +1,6 @@
 // import * as yup from 'yup'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useEditProductMutation, useGetProductQuery } from 'src/api/domain/product'
+import { useEditProductMutation, useGetProductQuery } from 'src/api/domain/master-data/product'
 import { handleErrMsg } from 'src/utils/helper/error-handler'
 import { ISwalFail, ISwalSuccess } from 'src/utils/helper/swal'
 import { object, string } from 'yup'
@@ -15,7 +15,6 @@ export default function useEditProductVm() {
         productCode: string().required('Productcode wajib diisi!'),
         name: string().required('Name wajib diisi!'),
         price: string().required('Price wajib diisi!'),
-        quantity: string().required('Quantity Unit wajib diisi!'),
         quantityUnit: string().required('Quantity Unit wajib diisi!'),
         description: string().required('Description wajib diisi!'),
     })
@@ -24,7 +23,6 @@ export default function useEditProductVm() {
         productCode: data?.productCode || ``,
         name: data?.name || ``,
         price: data?.price || ``,
-        quantity: data?.quantity || ``,
         quantityUnit: data?.quantityUnit || ``,
         description: data?.description || ``,
     }

@@ -1,6 +1,6 @@
 // import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom'
-import { useCreateOutletMutation } from 'src/api/domain/outlet'
+import { useCreateOutletMutation } from 'src/api/domain/master-data/outlet'
 import { handleErrMsg } from 'src/utils/helper/error-handler'
 import { ISwalFail, ISwalSuccess } from 'src/utils/helper/swal'
 import { object, string } from 'yup'

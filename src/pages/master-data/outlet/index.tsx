@@ -2,7 +2,7 @@ import { cilPencil, cilTrash } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 import { CButton, CCardTitle, CCol, CRow, CSmartTable } from '@coreui/react-pro'
 import { Link } from 'react-router-dom'
-import { useGetAllOutletQuery } from 'src/api/domain/outlet'
+import { useGetAllOutletQuery } from 'src/api/domain/master-data/outlet'
 import ContentFetchingLayout from 'src/layout/ContentFetchingLayout'
 import useOutletVm from './outlet-list-vm'
 

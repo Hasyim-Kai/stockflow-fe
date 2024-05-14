@@ -8,6 +8,13 @@ const productApi = api.injectEndpoints({
             query: () => `product`,
             providesTags: ['Product'],
         }),
+        getAllProductOptionList: builder.query<any, void>({
+            query: () => `product`,
+            providesTags: ['Product'],
+            transformResponse: (rawResult: any[]) => {
+                return rawResult.filter((product) => product.sealedQuantity > 0)
+            }
+        }),
         getProduct: builder.query<any, string>({
             query: (id: string) => `product/${id}`,
             providesTags: ['Product'],
@@ -28,13 +35,6 @@ const productApi = api.injectEndpoints({
             }),
             invalidatesTags: [`Product`]
         }),
-        openProductSeal: builder.mutation({
-            query: (params: { id: string }) => ({
-                url: `product/${params.id}`,
-                method: 'PATCH',
-            }),
-            invalidatesTags: [`Product`]
-        }),
         delProduct: builder.mutation({
             query: (params: { id: string }) => ({
                 url: `product/${params.id}`,
@@ -47,9 +47,9 @@ const productApi = api.injectEndpoints({
 
 export const {
     useGetAllProductQuery,
+    useGetAllProductOptionListQuery,
     useGetProductQuery,
     useCreateProductMutation,
     useEditProductMutation,
-    useOpenProductSealMutation,
     useDelProductMutation,
 } = productApi

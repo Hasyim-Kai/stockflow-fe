@@ -1,4 +1,4 @@
-import { useDelOutletMutation } from 'src/api/domain/outlet';
+import { useDelOutletMutation } from 'src/api/domain/master-data/outlet';
 import { ISwalConfirm, ISwalFail, ISwalSuccess } from 'src/utils/helper/swal';
 
 export default function useOutletVm() {

@@ -2,7 +2,7 @@ import { cilPencil, cilTrash } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 import { CBadge, CButton, CCardTitle, CCol, CRow, CSmartTable } from '@coreui/react-pro'
 import { Link } from 'react-router-dom'
-import { useGetAllProductQuery } from 'src/api/domain/product'
+import { useGetAllProductQuery } from 'src/api/domain/master-data/product'
 import ContentFetchingLayout from 'src/layout/ContentFetchingLayout'
 import useProductVm from './product-list-vm'
 
@@ -31,7 +31,7 @@ export default function MasterDataProductPage() {
             scopedColumns={{
                 isSealOpened: (item: any) => {
                     return <td className='text-center'>
-                        <CBadge className='fs-6' color={item.isSealOpened ? 'success' : 'warning'}>{item.isSealOpened ? 'Open' : 'Sealed'}</CBadge>
+                        <CBadge className='fs-6' color={item.sealStatus === `OPEN` ? 'success' : 'warning'}>{item.sealStatus}</CBadge>
                     </td>
                 },
                 actions: (item: any) => {

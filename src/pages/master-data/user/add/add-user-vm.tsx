@@ -1,6 +1,6 @@
 // import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom'
-import { useCreateUserMutation } from 'src/api/domain/user'
+import { useCreateUserMutation } from 'src/api/domain/master-data/user'
 import useStoreHelper from 'src/store/helper'
 import { handleErrMsg } from 'src/utils/helper/error-handler'
 import { ISwalFail, ISwalSuccess } from 'src/utils/helper/swal'

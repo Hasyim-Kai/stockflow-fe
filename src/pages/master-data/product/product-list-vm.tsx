@@ -1,14 +1,10 @@
-import { useDelProductMutation } from 'src/api/domain/product';
+import { useDelProductMutation, } from 'src/api/domain/master-data/product';
 import { ISwalConfirm, ISwalFail, ISwalSuccess } from 'src/utils/helper/swal';
 
 export default function useProductVm() {
     const [delProduct, { }] = useDelProductMutation()
 
     const columns = [
-        {
-            key: 'isSealOpened',
-            label: `Seal Status`
-        },
         {
             key: 'name',
         },
@@ -21,7 +17,12 @@ export default function useProductVm() {
             label: `Price`
         },
         {
-            key: 'quantity',
+            key: 'sealedQuantity',
+            label: `Sealed`,
+        },
+        {
+            key: 'openedQuantity',
+            label: `Opened`,
         },
         {
             key: 'quantityUnit',

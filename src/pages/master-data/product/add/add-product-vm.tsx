@@ -1,6 +1,6 @@
 // import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom'
-import { useCreateProductMutation } from 'src/api/domain/product'
+import { useCreateProductMutation } from 'src/api/domain/master-data/product'
 import { quantityUnitOptions } from 'src/utils/constant/QuantityUnit'
 import { handleErrMsg } from 'src/utils/helper/error-handler'
 import { ISwalFail, ISwalSuccess } from 'src/utils/helper/swal'
@@ -14,7 +14,6 @@ export default function useAddProductVm() {
         name: string().required('Name wajib diisi!'),
         productCode: string().required('Productcode wajib diisi!'),
         price: number().required('Price wajib diisi!'),
-        quantity: number().required('Quantity wajib diisi!'),
         quantityUnit: string().required('Quantity Unit wajib diisi!'),
         description: string().required('Description wajib diisi!'),
     })
@@ -23,7 +22,6 @@ export default function useAddProductVm() {
         name: '',
         productCode: '',
         price: 0,
-        quantity: 0,
         quantityUnit: quantityUnitOptions[0].value,
         description: '',
     }
