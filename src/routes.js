@@ -104,7 +104,7 @@ export const employeeRoutes = [
   // TRANSACTION PRODUCT
   { path: '/transaction/product', name: 'Transaction Product', element: lazy(() => import('src/pages/transaction/product')) },
   { path: '/transaction/product/in', name: 'Transaction In Product', element: lazy(() => import('src/pages/transaction/product/in')) },
-  { path: '/transaction/product/out/:id', name: 'Transaction Out Product', element: lazy(() => import('src/pages/transaction/product/out')) },
+  { path: '/transaction/product/out', name: 'Transaction Out Product', element: lazy(() => import('src/pages/transaction/product/out')) },
 ]
 
 export const ownerRoutes = employeeRoutes.concat([

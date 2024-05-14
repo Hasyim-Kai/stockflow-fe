@@ -17,6 +17,7 @@ export const api = createApi({
     'User',
     `Outlet`,
     'Product',
+    'TransactionProduct',
   ],
   endpoints: (build: any) => ({
     //   getMaterial: build.query({
