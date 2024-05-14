@@ -1,20 +1,22 @@
-import { cilPencil, cilTrash } from '@coreui/icons'
+import { cilCheck, cilPencil, cilTrash } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 import { CBadge, CButton, CCardTitle, CCol, CRow, CSmartTable } from '@coreui/react-pro'
 import { Link } from 'react-router-dom'
-import { useGetAllProductQuery } from 'src/api/domain/master-data/product'
 import ContentFetchingLayout from 'src/layout/ContentFetchingLayout'
 import useProductVm from './product-list-vm'
 
 export default function MasterDataProductPage() {
     const vm = useProductVm()
-    const { isLoading, isError, data } = useGetAllProductQuery()
 
     const header = <CRow className='p-2'>
         <CCol>
             <CCardTitle className="fs-3 fw-semibold">Product List</CCardTitle>
         </CCol>
-        <CCol xs="auto" className="ms-auto">
+        <CCol xs="auto" className="ms-auto d-flex gap-3">
+            <div className="d-flex gap-1">
+                <CButton color="primary" variant={`outline`} onClick={vm.handleToggleSold}>{vm.isSoldActive && <CIcon icon={cilCheck} />} Sold</CButton>
+                <CButton color="primary" variant={`outline`} onClick={vm.handleToggleNotSold}>{vm.isNotSoldActive && <CIcon icon={cilCheck} />} Not Sold</CButton>
+            </div>
             <Link to={`add`}>
                 <CButton color="primary">
                     + Add New Data
@@ -23,10 +25,10 @@ export default function MasterDataProductPage() {
         </CCol>
     </CRow>
 
-    return <ContentFetchingLayout header={header} isLoading={isLoading} isError={isError}>
+    return <ContentFetchingLayout header={header} isLoading={vm.isLoading} isError={vm.isError}>
         <CSmartTable
             columns={vm.columns}
-            items={data}
+            items={vm.filterSoldOrNotSold()}
             itemsPerPage={10}
             scopedColumns={{
                 isSealOpened: (item: any) => {

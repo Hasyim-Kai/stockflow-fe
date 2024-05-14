@@ -12,14 +12,12 @@ export default function TransactionProductPage() {
     const { isLoading, isError, data } = useGetAllTransactionProductQuery()
 
     const header = <>
-        <CCol className='text-center'>
+        <CCol xs='auto' className='ms-auto text-center d-flex gap-3'>
             <Link to={`out`}>
                 <CButton color="primary">
                     <CIcon icon={cilMinus} /> Out Stock
                 </CButton>
             </Link>
-        </CCol>
-        <CCol className='text-center'>
             <Link to={`in`}>
                 <CButton color="primary">
                     <CIcon icon={cilPlus} /> In Stock
