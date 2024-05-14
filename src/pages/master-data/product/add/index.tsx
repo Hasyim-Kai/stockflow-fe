@@ -29,19 +29,15 @@ export default function MasterDataAddProductPage() {
                     <CForm onSubmit={handleSubmit} className='d-flex flex-column gap-3'>
                         <div className="">
                             <InputField label='Name' type="text" name='name' placeholder="Enter Item Here"
-                                error={errors.name} onChangeValue={handleChange} value={values.name} />
+                                error={errors.name} onChange={handleChange} value={values.name} />
                         </div>
                         <div className="">
                             <InputField label='Product Code' type="text" name='productCode' placeholder="name@example.com"
-                                error={errors.productCode} onChangeValue={handleChange} value={values.productCode} />
+                                error={errors.productCode} onChange={handleChange} value={values.productCode} />
                         </div>
                         <div className="">
                             <InputField label='Price' type="number" step={0.01} name='price' placeholder="0.00"
-                                error={errors.price} onChangeValue={handleChange} value={String(values.price)} />
-                        </div>
-                        <div className="">
-                            <InputField label='Quantity' type="number" name='quantity' placeholder="100"
-                                error={errors.quantity} onChangeValue={handleChange} value={String(values.quantity)} />
+                                error={errors.price} onChange={handleChange} value={String(values.price)} />
                         </div>
                         <div className="">
                             <CFormLabel ></CFormLabel>

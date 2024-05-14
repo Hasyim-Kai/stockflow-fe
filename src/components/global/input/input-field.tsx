@@ -6,17 +6,20 @@ type Props = {
     name: string
     type: string
     placeholder?: string
-    error: string | undefined
-    onChangeValue: ChangeEventHandler<HTMLInputElement>
-    value: string
+    error?: string | undefined
+    onChange?: ChangeEventHandler<HTMLInputElement>
+    value?: string
     step?: number
+    disabled?: boolean
+    min?: number
+    max?: number
 }
 
 export default function InputField(props: Props) {
     return <>
         <CFormInput placeholder={props.placeholder} {...props}
             className={`${props.error ? 'border border-danger' : ''}`}
-            onChange={props.onChangeValue} value={props.value} />
+            value={props.value} />
         {props.error && <CAlert className="mt-3 p-2" color="danger">{props.error}</CAlert>}
     </>
 }

@@ -29,11 +29,11 @@ export default function MasterDataAddOutletPage() {
                     <CForm onSubmit={handleSubmit} className='d-flex flex-column gap-3'>
                         <div className="">
                             <InputField label='Name' type="name" name='name' placeholder="John Wick"
-                                error={errors.name} onChangeValue={handleChange} value={values.name} />
+                                error={errors.name} onChange={handleChange} value={values.name} />
                         </div>
                         <div className="">
                             <InputField label='Address' type="text" name='address' placeholder="Northgard Avenue St. 123"
-                                error={errors.address} onChangeValue={handleChange} value={values.address} />
+                                error={errors.address} onChange={handleChange} value={values.address} />
                         </div>
 
                         {vm.isLoading ? <Loading />

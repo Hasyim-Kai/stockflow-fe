@@ -32,15 +32,15 @@ export default function MasterDataEditUserPage() {
                             : <CForm onSubmit={handleSubmit} className='d-flex flex-column gap-3'>
                                 <div className="">
                                     <InputField label='Name' type="name" name='name' placeholder="John Wick"
-                                        error={errors.name} onChangeValue={handleChange} value={values.name} />
+                                        error={errors.name} onChange={handleChange} value={values.name} />
                                 </div>
                                 <div className="">
                                     <InputField label='Email' type="email" name='email' placeholder="name@example.com"
-                                        error={errors.email} onChangeValue={handleChange} value={values.email} />
+                                        error={errors.email} onChange={handleChange} value={values.email} />
                                 </div>
                                 <div className="">
                                     <InputField label='password' type="password" name='password'
-                                        error={errors.password} onChangeValue={handleChange} value={values.password} />
+                                        error={errors.password} onChange={handleChange} value={values.password} />
                                 </div>
                                 {/* THIS ONLY FOR ADMIN ROLE */}
                                 {vm.userRole === `ADMIN` && <div>

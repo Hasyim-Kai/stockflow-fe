@@ -3,7 +3,7 @@ import Loading from "src/components/global/loading/loading"
 
 type Props = {
     // isPadding?: boolean
-    title: string
+    title?: string
     topRightSection?: React.ReactNode
     children?: React.ReactNode
     isLoading?: boolean
