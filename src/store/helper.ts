@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux'
 import { GlobalStateType } from 'src/store'
 
 export default function useStoreHelper() {
+    const userInfo = useSelector((state: GlobalStateType) => state.global.user)
     const userRole = useSelector((state: GlobalStateType) => state.global.user?.role)
 
     return {
-        userRole,
+        userInfo, userRole,
 
     }
 }
