@@ -16,6 +16,7 @@ interface TransactionProductDynamicFormType {
 
 export default function useTransactionOutProductVm() {
     const { userInfo } = useStoreHelper()
+    // use Product options where the sealedQuantity more than 0
     const { isLoading, data, isSuccess } = useGetAllProductOptionListQuery()
     const [createTransactionProduct, { isLoading: isSubmitLoading }] = useCreateTransactionProductMutation()
     const nav = useNavigate()

@@ -1,6 +1,6 @@
 // import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom'
-import { useGetAllProductOptionListQuery } from 'src/api/domain/master-data/product'
+import { useGetAllProductQuery } from 'src/api/domain/master-data/product'
 import { useCreateTransactionProductMutation } from 'src/api/domain/transaction/product'
 import useStoreHelper from 'src/store/helper'
 import { TransactionProductEnum } from 'src/utils/constant/general'
@@ -16,7 +16,8 @@ interface TransactionProductDynamicFormType {
 
 export default function useTransactionInProductVm() {
     const { userInfo } = useStoreHelper()
-    const { isLoading, data, isSuccess } = useGetAllProductOptionListQuery()
+    // use All Product options
+    const { isLoading, data, isSuccess } = useGetAllProductQuery()
     const [createTransactionProduct, { isLoading: isSubmitLoading }] = useCreateTransactionProductMutation()
     const nav = useNavigate()
 
