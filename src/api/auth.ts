@@ -13,6 +13,7 @@ const authApi = api.injectEndpoints({
             // transformResponse: (rawResult: any, meta: any) => {
             //     return rawResult.data
             // },
+            invalidatesTags: [`Auth`, `Product`, `Outlet`, 'Product', 'TransactionProduct'],
         }),
     })
 })

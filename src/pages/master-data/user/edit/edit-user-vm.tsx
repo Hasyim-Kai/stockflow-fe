@@ -28,7 +28,7 @@ export default function useEditUserVm() {
         email: data?.email || ``,
         password: ``,
         role: data?.role || ``,
-        outletId: data?.role || '',
+        outletId: data?.outletId || '',
     }
 
     const handleFormSubmit = async (values: any) => {
