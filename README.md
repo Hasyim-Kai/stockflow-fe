@@ -98,7 +98,7 @@ coreui-pro-react-admin-template
 │   ├── layouts/     # layout containers
 │   ├── scss/        # scss styles
 │   ├── views/       # application views
-│   ├── _nav.js      # sidebar navigation config
+│   ├── sidebar-nav  # sidebar navigation config
 │   ├── App.js
 │   ├── ...
 │   ├── index.js
