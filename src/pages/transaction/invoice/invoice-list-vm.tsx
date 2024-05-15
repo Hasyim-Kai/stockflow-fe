@@ -1,4 +1,4 @@
-export default function useTransactionProductVm() {
+export default function useTransactionInvoiceVm() {
 
     const columns = [
         {
@@ -29,14 +29,14 @@ export default function useTransactionProductVm() {
 
     // const onOpenSeal = (id: string) => {
     //     ISwalConfirm(() => {
-    //         openProductSeal({ id: id || `` }).unwrap().then(() => ISwalSuccess())
+    //         openInvoiceSeal({ id: id || `` }).unwrap().then(() => ISwalSuccess())
     //             .catch(() => ISwalFail())
     //     })
     // }
 
     // const onDel = (id: string) => {
     //     ISwalConfirm(() => {
-    //         delProduct({ id: id || `` }).unwrap().then(() => ISwalSuccess())
+    //         delInvoice({ id: id || `` }).unwrap().then(() => ISwalSuccess())
     //             .catch(() => ISwalFail())
     //     })
     // }
