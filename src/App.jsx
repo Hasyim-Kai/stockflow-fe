@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
-import { HashRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
 
 const loading = (
@@ -25,7 +25,7 @@ function App() {
   const isAuth = Boolean(useSelector((state) => state.global.user?.access_token))
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Suspense fallback={loading}>
         <Routes>
           <Route exact path="/login" name="Login Page" element={<Login />} />
@@ -38,7 +38,7 @@ function App() {
             element={isAuth ? <DefaultLayout /> : <Navigate to="/login" replace />} /> */}
         </Routes>
       </Suspense>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
