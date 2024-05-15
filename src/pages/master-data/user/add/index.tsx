@@ -6,6 +6,7 @@ import InputField from 'src/components/global/input/input-field'
 import Loading from 'src/components/global/loading/loading'
 import { userRoleList } from 'src/utils/constant/user-role'
 import useAddUserVm from './add-user-vm'
+import { convertSelectOptions } from 'src/utils/helper/selectDataConverter'
 
 export default function MasterDataAddUserPage() {
     const vm = useAddUserVm()
@@ -41,15 +42,19 @@ export default function MasterDataAddUserPage() {
                                 error={errors.password} onChange={handleChange} value={values.password} />
                         </div>
                         {/* THIS ONLY FOR ADMIN ROLE */}
-                        {vm.userRole === `ADMIN` && <div>
-                            <CFormLabel >Role</CFormLabel>
-                            <CFormSelect name='role' options={userRoleList}
-                                onChange={handleChange} value={values.role} />
+                        {vm.userRole === `ADMIN` && <>
+                            <div>
+                                <CFormLabel >Role</CFormLabel>
+                                <CFormSelect name='role' options={userRoleList}
+                                    onChange={handleChange} value={values.role} />
+                            </div>
 
-                            {/* <CFormLabel >Outlet</CFormLabel>
-                            <CFormSelect name='Outlet' options={userOutletList}
-                                onChange={handleChange} value={values.Outlet} /> */}
-                        </div>}
+                            <div>
+                                <CFormLabel >Outlet</CFormLabel>
+                                <CFormSelect name='outletId' options={convertSelectOptions(vm.dataOutlet)}
+                                    onChange={handleChange} value={values.outletId} />
+                            </div>
+                        </>}
 
                         {vm.isLoading ? <Loading />
                             : <CButton type="submit" color="primary" className="px-4 mt-3">
