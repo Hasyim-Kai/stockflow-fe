@@ -19,6 +19,7 @@ import { UserRoleEnum } from 'src/utils/constant/user-role.ts'
 import { adminNav } from 'src/sidebar-nav/admin.tsx'
 import { ownerNav } from 'src/sidebar-nav/owner.tsx'
 import { employeeNav } from 'src/sidebar-nav/employee.tsx'
+// import { coreuiFeaturesNav } from 'src/sidebar-nav/core-ui-features.tsx'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
@@ -26,6 +27,7 @@ const AppSidebar = () => {
   const sidebarShow = useSelector((state) => state.global.sidebarShow)
 
   const authorizationNav = () => {
+    // return <AppSidebarNav items={coreuiFeaturesNav} />
     if (userRole === UserRoleEnum.ADMIN) { return <AppSidebarNav items={adminNav} /> }
     else if (userRole === UserRoleEnum.OUTLET_OWNER) { return <AppSidebarNav items={ownerNav} /> }
     else if (userRole === UserRoleEnum.EMPLOYEE) { return <AppSidebarNav items={employeeNav} /> }

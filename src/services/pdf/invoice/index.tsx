@@ -1,6 +1,5 @@
 import { Document, Page, StyleSheet, Text, View } from '@react-pdf/renderer'
 import { format } from 'date-fns'
-import { id as localId } from 'date-fns/locale'
 import InvoiceItemsTable from './InvoiceItemsTable'
 
 const styles = StyleSheet.create({
@@ -72,8 +71,8 @@ const styles = StyleSheet.create({
     },
 })
 
-const InvoicePreview = ({ invoice, displayKurs }) => {
-    function formatRupiah(angka, prefix) {
+const InvoicePreview = ({ invoice, displayKurs = false }: any) => {
+    function formatRupiah(angka: string, prefix: string) {
         var number_string = angka.replace(/[^,\d]/g, '').toString(),
             split = number_string.split(','),
             sisa = split[0].length % 3,
@@ -96,11 +95,11 @@ const InvoicePreview = ({ invoice, displayKurs }) => {
                 <View style={styles.headerContainer}>
                     <View style={styles.signature}>
                         <Text style={styles.label}>NOMOR </Text>
-                        <Text style={styles.headerContent}>: {invoice.referenceNumber}</Text>
+                        {/* <Text style={styles.headerContent}>: {invoice.referenceNumber}</Text> */}
                     </View>
                     <View style={styles.signature}>
                         <Text style={styles.label}>NAMA </Text>
-                        <Text style={styles.headerContentRight}>: {invoice?.productOrder?.customer?.name}</Text>
+                        {/* <Text style={styles.headerContentRight}>: {invoice?.productOrder?.customer?.name}</Text> */}
                     </View>
                 </View>
 
@@ -108,12 +107,12 @@ const InvoicePreview = ({ invoice, displayKurs }) => {
                     <View style={styles.signature}>
                         <Text style={styles.label}>TANGGAL </Text>
                         <Text style={styles.headerContent}>
-                            : {format(new Date(invoice.dateShipped), 'dd/MM/yyyy', { locale: localId })}
+                            {/* : {format(new Date(invoice.dateShipped), 'dd/MM/yyyy')} */}
                         </Text>
                     </View>
                     <View style={styles.signature}>
                         <Text style={styles.label}>ALAMAT </Text>
-                        <Text style={styles.headerContentRight}>{`: ${invoice?.shippedAddress}`}</Text>
+                        {/* <Text style={styles.headerContentRight}>{`: ${invoice?.shippedAddress}`}</Text> */}
                     </View>
                 </View>
 
@@ -122,13 +121,13 @@ const InvoicePreview = ({ invoice, displayKurs }) => {
                         <View style={styles.signature}>
                             <Text style={styles.label}>KURS USD </Text>
                             <Text style={styles.headerContent}>
-                                : {formatRupiah(parseFloat(invoice?.productOrder?.exchangeRate).toFixed(0), 'Rp ')}
+                                {/* : {formatRupiah(parseFloat(invoice?.productOrder?.exchangeRate).toFixed(0), 'Rp ')} */}
                             </Text>
                         </View>
                     </View>
                 )}
 
-                <InvoiceItemsTable invoice={invoice} />
+                {/* <InvoiceItemsTable invoice={invoice} /> */}
 
                 <View style={styles.signatureSign}>
                     <Text style={styles.signatureTextA}>Hormat Kami</Text>

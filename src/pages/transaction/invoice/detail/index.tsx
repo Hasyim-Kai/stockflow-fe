@@ -2,7 +2,7 @@ import BackBtn from 'src/components/global/button/back-btn'
 import ContentCardLayout from 'src/layout/ContentCardLayout'
 import useDetailTransactionInvoiceVm from './invoice-detail-vm'
 import { CCol } from '@coreui/react-pro'
-import { formatDate } from 'src/utils/helper/date'
+import InvoicePreview from 'src/services/pdf/invoice'
 
 export default function DetailTransactionInvoicePage() {
     const vm = useDetailTransactionInvoiceVm()
@@ -10,6 +10,7 @@ export default function DetailTransactionInvoicePage() {
     const header = <CCol xs={`auto`} className='ms-auto'><BackBtn /></CCol>
 
     return <ContentCardLayout title='Invoice Transactions Detail' topRightSection={header} isLoading={vm.isLoading} isError={vm.isError}>
+        <InvoicePreview />
         {/* <h3>isInvoiced:{vm.data?.isInvoiced}</h3>
         <h3>createdAt:{formatDate(vm.data?.createdAt)}</h3>
         <h3>updatedAt:{formatDate(vm.data?.updatedAt)}</h3>

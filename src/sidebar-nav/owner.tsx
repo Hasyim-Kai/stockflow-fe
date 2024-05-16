@@ -33,6 +33,12 @@ export const ownerNav = [
                 to: '/transaction/product',
                 icon: <CIcon icon={cilDrink} customClassName="nav-icon" />,
             },
+            {
+                component: CNavItem,
+                name: 'Invoice',
+                to: '/transaction/invoice',
+                icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
+            },
         ],
     },
 ]

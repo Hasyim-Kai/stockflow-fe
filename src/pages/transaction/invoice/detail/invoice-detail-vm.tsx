@@ -20,7 +20,7 @@ export default function useDetailTransactionInvoiceVm() {
     // }
 
     return {
-        isLoading, isError, data,
+        // isLoading, isError, data,
 
 
     }

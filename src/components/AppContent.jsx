@@ -6,12 +6,13 @@ import useStoreHelper from 'src/store/helper'
 import { UserRoleEnum } from 'src/utils/constant/user-role.ts'
 
 // routes config
-import routes, { employeeRoutes, ownerRoutes, adminRoutes } from 'src/routes'
+import routes, { employeeRoutes, ownerRoutes, adminRoutes, coreUiFeatures } from 'src/routes'
 
 const AppContent = () => {
   const { userRole } = useStoreHelper()
 
   const authorizationNav = () => {
+    // return coreUiFeatures
     if (userRole === UserRoleEnum.ADMIN) { return adminRoutes }
     else if (userRole === UserRoleEnum.OUTLET_OWNER) { return ownerRoutes }
     else if (userRole === UserRoleEnum.EMPLOYEE) { return employeeRoutes }
