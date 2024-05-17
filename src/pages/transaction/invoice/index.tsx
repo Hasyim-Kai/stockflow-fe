@@ -8,6 +8,7 @@ import useTransactionInvoiceVm from './invoice-list-vm'
 
 export default function TransactionInvoicePage() {
     const vm = useTransactionInvoiceVm()
+    // const { isLoading, isError, data } = useGetAllTransactionProductQuery()
 
     const header = <>
         <CCol xs='auto' className='ms-auto text-center d-flex gap-3'>
@@ -24,7 +25,7 @@ export default function TransactionInvoicePage() {
         </CCol>
     </>
 
-    return <ContentCardLayout title='Invoice Transactions' topRightSection={header} isLoading={vm.isLoading} isError={vm.isError}>
+    return <ContentCardLayout title='Invoice Transactions' topRightSection={header} isLoading={isLoading} isError={isError}>
         <CSmartTable
             columns={vm.columns}
             // items={vm.data}

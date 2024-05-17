@@ -6,6 +6,7 @@ import { useGetAllTransactionProductQuery } from 'src/api/domain/transaction/pro
 import ContentCardLayout from 'src/layout/ContentCardLayout'
 import { formatDate } from 'src/utils/helper/date'
 import useTransactionProductVm from './product-list-vm'
+import { formatToIdrCurrency } from 'src/utils/helper/currency'
 
 export default function TransactionProductPage() {
     const vm = useTransactionProductVm()
@@ -35,6 +36,7 @@ export default function TransactionProductPage() {
                 type: (item: any) => <td className='text-center'>
                     <CBadge className='fs-6' color={item.type === `IN` ? 'success' : item.type === `ADJUSTMENT` ? 'info' : 'warning'}>{item.type}</CBadge></td>,
                 inputBy: (item: any) => <td className=''>{item.user.name}</td>,
+                totalPrice: (item: any) => <td className=''>{formatToIdrCurrency(item.totalPrice)}</td>,
                 createdAt: (item: any) => <td className=''>{formatDate(item.createdAt)}</td>,
                 updatedAt: (item: any) => <td className=''>{formatDate(item.updatedAt)}</td>,
                 isInvoiced: (item: any) => <td className='text-center'>

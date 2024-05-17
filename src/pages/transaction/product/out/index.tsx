@@ -6,6 +6,7 @@ import InputField from 'src/components/global/input/input-field'
 import Loading from 'src/components/global/loading/loading'
 import { convertSelectOptions } from 'src/utils/helper/selectDataConverter'
 import useTransactionOutProductVm from './out-product-vm'
+import { formatToIdrCurrency } from 'src/utils/helper/currency'
 
 export default function TransactionOutProductPage() {
     const vm = useTransactionOutProductVm()
@@ -62,8 +63,8 @@ export default function TransactionOutProductPage() {
                                                                 <span className="text-danger">Max Quantity : {vm.getThisProductMaxQty(formItem) || 0}</span>
                                                             </div>
                                                             <div className='mb-3'>
-                                                                <InputField label='Sum Price' type="number" name={`productList.${index}.sumPrice`} placeholder="000" disabled
-                                                                    value={vm.isSuccess ? String(vm.calculateSumPrice(vm.data, formItem)) : `0`} />
+                                                                <InputField label='Sum Price' type="text" name={`productList.${index}.sumPrice`} placeholder="000" disabled
+                                                                    value={vm.isSuccess ? String(formatToIdrCurrency(vm.calculateSumPrice(vm.data, formItem))) : `0`} />
                                                             </div>
                                                             {/* <h5 className='mb-3'>{isSuccess && `Sum Price : ${vm.calculateSumPrice(data, arrayHelpers, index)}`}</h5> */}
                                                         </CCol>

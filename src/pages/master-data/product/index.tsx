@@ -1,8 +1,9 @@
 import { cilCheck, cilPencil, cilTrash } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-import { CBadge, CButton, CCardTitle, CCol, CRow, CSmartTable } from '@coreui/react-pro'
+import { CButton, CCardTitle, CCol, CRow, CSmartTable } from '@coreui/react-pro'
 import { Link } from 'react-router-dom'
 import ContentFetchingLayout from 'src/layout/ContentFetchingLayout'
+import { formatToIdrCurrency } from 'src/utils/helper/currency'
 import useProductVm from './product-list-vm'
 
 export default function MasterDataProductPage() {
@@ -31,11 +32,7 @@ export default function MasterDataProductPage() {
             items={vm.filterSoldOrNotSold()}
             itemsPerPage={10}
             scopedColumns={{
-                isSealOpened: (item: any) => {
-                    return <td className='text-center'>
-                        <CBadge className='fs-6' color={item.sealStatus === `OPEN` ? 'success' : 'warning'}>{item.sealStatus}</CBadge>
-                    </td>
-                },
+                price: (item: any) => <td className=''>{formatToIdrCurrency(item.price)}</td>,
                 actions: (item: any) => {
                     return <td>
                         <CCol className="py-2 d-flex gap-3">

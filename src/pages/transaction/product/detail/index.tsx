@@ -3,6 +3,7 @@ import BackBtn from 'src/components/global/button/back-btn'
 import ContentCardLayout from 'src/layout/ContentCardLayout'
 import { formatDate } from 'src/utils/helper/date'
 import useDetailTransactionProductVm from './product-detail-vm'
+import { formatToIdrCurrency } from 'src/utils/helper/currency'
 
 export default function DetailTransactionProductPage() {
     const vm = useDetailTransactionProductVm()
@@ -47,7 +48,7 @@ export default function DetailTransactionProductPage() {
             <CCol sm={3}>
                 <div className="border-start border-start-4 border-start-primary py-1 px-3 mb-3">
                     <div className="text-medium-emphasis small">Total Price</div>
-                    <div className="fs-5 fw-semibold">{vm.data?.totalPrice}</div>
+                    <div className="fs-5 fw-semibold">{formatToIdrCurrency(vm.data?.totalPrice)}</div>
                 </div>
             </CCol>
         </CRow>
@@ -61,7 +62,8 @@ export default function DetailTransactionProductPage() {
                 scopedColumns={{
                     name: (item: any) => <td className=''>{item.product.name}</td>,
                     productCode: (item: any) => <td className=''>{item.product.productCode}</td>,
-                    price: (item: any) => <td className=''>{item.product.price}</td>,
+                    price: (item: any) => <td className=''>{formatToIdrCurrency(item.product.price)}</td>,
+                    sumPrice: (item: any) => <td className=''>{formatToIdrCurrency(item.sumPrice)}</td>,
                 }}
                 tableProps={{
                     className: 'add-this-class',
