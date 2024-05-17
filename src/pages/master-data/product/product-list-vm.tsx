@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDelProductMutation, useGetAllProductQuery, } from 'src/api/domain/master-data/product';
+import { handleErrMsg } from 'src/utils/helper/error-handler';
 import { ISwalConfirm, ISwalFail, ISwalSuccess } from 'src/utils/helper/swal';
 
 export default function useProductVm() {
@@ -59,7 +60,7 @@ export default function useProductVm() {
     const onDel = (id: string) => {
         ISwalConfirm(() => {
             delProduct({ id: id || `` }).unwrap().then(() => ISwalSuccess())
-                .catch(() => ISwalFail())
+                .catch((error) => ISwalFail(handleErrMsg(error)))
         })
     }
 

@@ -1,4 +1,5 @@
 import { useDelOutletMutation } from 'src/api/domain/master-data/outlet';
+import { handleErrMsg } from 'src/utils/helper/error-handler';
 import { ISwalConfirm, ISwalFail, ISwalSuccess } from 'src/utils/helper/swal';
 
 export default function useOutletVm() {
@@ -22,7 +23,7 @@ export default function useOutletVm() {
     const onDel = (id: string) => {
         ISwalConfirm(() => {
             delOutlet({ id: id || `` }).unwrap().then(() => ISwalSuccess())
-                .catch(() => ISwalFail())
+                .catch((error) => ISwalFail(handleErrMsg(error)))
         })
     }
 
