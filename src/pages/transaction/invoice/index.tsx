@@ -5,39 +5,19 @@ import { Link } from 'react-router-dom'
 import ContentCardLayout from 'src/layout/ContentCardLayout'
 import { formatDate } from 'src/utils/helper/date'
 import useTransactionInvoiceVm from './invoice-list-vm'
+import { useGetAllTransactionInvoiceQuery } from 'src/api/domain/transaction/invoice'
 
 export default function TransactionInvoicePage() {
     const vm = useTransactionInvoiceVm()
-    // const { isLoading, isError, data } = useGetAllTransactionProductQuery()
+    const { isLoading, isError, data } = useGetAllTransactionInvoiceQuery()
 
-    const header = <>
-        <CCol xs='auto' className='ms-auto text-center d-flex gap-3'>
-            <Link to={`out`}>
-                <CButton color="primary">
-                    <CIcon icon={cilMinus} /> Out Stock
-                </CButton>
-            </Link>
-            <Link to={`in`}>
-                <CButton color="primary">
-                    <CIcon icon={cilPlus} /> In Stock
-                </CButton>
-            </Link>
-        </CCol>
-    </>
-
-    return <ContentCardLayout title='Invoice Transactions' topRightSection={header} isLoading={isLoading} isError={isError}>
+    return <ContentCardLayout title='Invoice Transactions' isLoading={isLoading} isError={isError}>
         <CSmartTable
             columns={vm.columns}
-            // items={vm.data}
+            items={data}
             itemsPerPage={10}
             scopedColumns={{
-                type: (item: any) => <td className='text-center'>
-                    <CBadge className='fs-6' color={item.type === `IN` ? 'success' : item.type === `ADJUSTMENT` ? 'info' : 'warning'}>{item.type}</CBadge></td>,
-                inputBy: (item: any) => <td className=''>{item.user.name}</td>,
                 createdAt: (item: any) => <td className=''>{formatDate(item.createdAt)}</td>,
-                updatedAt: (item: any) => <td className=''>{formatDate(item.updatedAt)}</td>,
-                isInvoiced: (item: any) => <td className='text-center'>
-                    <CBadge className='fs-6' color={item.isInvoiced === `YES` ? 'success' : 'warning'}>{item.isInvoiced}</CBadge></td>,
                 actions: (item: any) => <td>
                     <CCol className="py-2 d-flex gap-3">
                         <Link to={`detail/${item.id}`}>

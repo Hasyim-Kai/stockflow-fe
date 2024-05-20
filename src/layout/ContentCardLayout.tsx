@@ -8,6 +8,7 @@ type Props = {
     children?: React.ReactNode
     isLoading?: boolean
     isError?: boolean
+    smallTitle?: boolean
 }
 
 export default function ContentCardLayout({
@@ -15,14 +16,15 @@ export default function ContentCardLayout({
     topRightSection,
     children,
     isLoading = false,
-    isError = false
+    isError = false,
+    smallTitle = false
 }: Props) {
 
     return <CCard className="mb-4">
         <CCardHeader>
             <CRow className='p-2'>
                 <CCol>
-                    <CCardTitle className="fs-3 fw-semibold">{title}</CCardTitle>
+                    <CCardTitle className={`${smallTitle ? '' : 'fs-3'} fw-semibold`}>{title}</CCardTitle>
                 </CCol>
                 <CCol xs="4" className="ms-auto">
                     <CRow className=''>{topRightSection}</CRow>

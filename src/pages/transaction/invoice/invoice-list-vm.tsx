@@ -2,23 +2,12 @@ export default function useTransactionInvoiceVm() {
 
     const columns = [
         {
-            key: 'type',
-        },
-        {
-            key: 'totalPrice',
-            label: `Total Price`
-        },
-        {
-            key: 'inputBy',
-            label: `Input By`
+            key: 'id',
+            _style: { width: '10%' }
         },
         {
             key: 'createdAt',
-            label: `Transaction Date`
-        },
-        {
-            key: 'isInvoiced',
-            label: `Is Invoiced`
+            label: `Invoice Date`
         },
         {
             key: 'actions',
@@ -26,20 +15,6 @@ export default function useTransactionInvoiceVm() {
             sorter: false,
         },
     ]
-
-    // const onOpenSeal = (id: string) => {
-    //     ISwalConfirm(() => {
-    //         openInvoiceSeal({ id: id || `` }).unwrap().then(() => ISwalSuccess())
-    //             .catch(() => ISwalFail())
-    //     })
-    // }
-
-    // const onDel = (id: string) => {
-    //     ISwalConfirm(() => {
-    //         delInvoice({ id: id || `` }).unwrap().then(() => ISwalSuccess())
-    //             .catch(() => ISwalFail())
-    //     })
-    // }
 
     return {
         columns,

@@ -18,6 +18,8 @@ export const api = createApi({
     `Outlet`,
     'Product',
     'TransactionProduct',
+    'TransactionInvoice', 'Invoice',
+
   ],
   endpoints: (build: any) => ({
     //   getMaterial: build.query({

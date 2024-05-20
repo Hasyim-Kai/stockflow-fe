@@ -1,5 +1,4 @@
 import { Document, Page, StyleSheet, Text, View } from '@react-pdf/renderer'
-import { format } from 'date-fns'
 import InvoiceItemsTable from './InvoiceItemsTable'
 
 const styles = StyleSheet.create({
@@ -11,6 +10,7 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         lineHeight: 1.5,
         flexDirection: 'column',
+        display: 'flex',
     },
     header: {
         fontSize: 14,
@@ -32,8 +32,10 @@ const styles = StyleSheet.create({
         width: 260,
     },
     headerContainer: {
-        justifyContent: 'flex-start',
+        display: 'flex',
         flexDirection: 'row',
+        gap: 150,
+        justifyContent: 'flex-start',
     },
     billTo: {
         paddingBottom: 1,
@@ -51,13 +53,13 @@ const styles = StyleSheet.create({
     signatureTextA: {
         flexDirection: 'column',
         textAlign: 'left',
-        marginLeft: 77,
+        // marginLeft: 77,
         width: 440,
     },
     signatureTextA2: {
         flexDirection: 'column',
         textAlign: 'left',
-        marginLeft: 70,
+        // marginLeft: 70,
         width: 360,
     },
 
@@ -72,21 +74,6 @@ const styles = StyleSheet.create({
 })
 
 const InvoicePreview = ({ invoice, displayKurs = false }: any) => {
-    function formatRupiah(angka: string, prefix: string) {
-        var number_string = angka.replace(/[^,\d]/g, '').toString(),
-            split = number_string.split(','),
-            sisa = split[0].length % 3,
-            rupiah = split[0].substr(0, sisa),
-            ribuan = split[0].substr(sisa).match(/\d{3}/gi)
-
-        if (ribuan) {
-            const separator = sisa ? '.' : ''
-            rupiah += separator + ribuan.join('.')
-        }
-
-        rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah
-        return prefix === undefined ? rupiah : rupiah ? 'Rp ' + rupiah : ''
-    }
 
     return (
         <Document>
@@ -95,11 +82,11 @@ const InvoicePreview = ({ invoice, displayKurs = false }: any) => {
                 <View style={styles.headerContainer}>
                     <View style={styles.signature}>
                         <Text style={styles.label}>NOMOR </Text>
-                        {/* <Text style={styles.headerContent}>: {invoice.referenceNumber}</Text> */}
+                        <Text style={styles.headerContent}>: 1</Text>
                     </View>
                     <View style={styles.signature}>
                         <Text style={styles.label}>NAMA </Text>
-                        {/* <Text style={styles.headerContentRight}>: {invoice?.productOrder?.customer?.name}</Text> */}
+                        <Text style={styles.headerContentRight}>: Sugiono</Text>
                     </View>
                 </View>
 
@@ -116,22 +103,10 @@ const InvoicePreview = ({ invoice, displayKurs = false }: any) => {
                     </View>
                 </View>
 
-                {displayKurs && (
-                    <View style={styles.headerContainer}>
-                        <View style={styles.signature}>
-                            <Text style={styles.label}>KURS USD </Text>
-                            <Text style={styles.headerContent}>
-                                {/* : {formatRupiah(parseFloat(invoice?.productOrder?.exchangeRate).toFixed(0), 'Rp ')} */}
-                            </Text>
-                        </View>
-                    </View>
-                )}
-
                 {/* <InvoiceItemsTable invoice={invoice} /> */}
 
                 <View style={styles.signatureSign}>
                     <Text style={styles.signatureTextA}>Hormat Kami</Text>
-                    <Text style={styles.signatureTextB}>Customer</Text>
                 </View>
                 <View style={styles.signatureSign}>
                     <Text style={styles.signatureTextA2}>(.............................)</Text>

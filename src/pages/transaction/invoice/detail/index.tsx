@@ -1,8 +1,9 @@
+import { CCol, CRow, CSmartTable } from '@coreui/react-pro'
 import BackBtn from 'src/components/global/button/back-btn'
 import ContentCardLayout from 'src/layout/ContentCardLayout'
+import { formatToIdrCurrency } from 'src/utils/helper/currency'
+import { formatDate } from 'src/utils/helper/date'
 import useDetailTransactionInvoiceVm from './invoice-detail-vm'
-import { CCol } from '@coreui/react-pro'
-import InvoicePreview from 'src/services/pdf/invoice'
 
 export default function DetailTransactionInvoicePage() {
     const vm = useDetailTransactionInvoiceVm()
@@ -10,15 +11,86 @@ export default function DetailTransactionInvoicePage() {
     const header = <CCol xs={`auto`} className='ms-auto'><BackBtn /></CCol>
 
     return <ContentCardLayout title='Invoice Transactions Detail' topRightSection={header} isLoading={vm.isLoading} isError={vm.isError}>
-        <InvoicePreview />
-        {/* <h3>isInvoiced:{vm.data?.isInvoiced}</h3>
-        <h3>createdAt:{formatDate(vm.data?.createdAt)}</h3>
-        <h3>updatedAt:{formatDate(vm.data?.updatedAt)}</h3>
-        <h3>type:{vm.data?.type}</h3>
-        <h3>totalPrice:{vm.data?.totalPrice}</h3>
+        <CRow className='my-3'>
+            <CCol sm={`auto`}>
+                <div className="border-start border-start-4 border-start-primary py-1 px-3 mb-3">
+                    <div className="text-medium-emphasis small">Outlet</div>
+                    <div className="fs-5 fw-semibold">{vm.data?.outlet.name} - {vm.data?.outlet.address}</div>
+                </div>
+            </CCol>
+            <CCol sm={`auto`}>
+                <div className="border-start border-start-4 border-start-info py-1 px-3 mb-3">
+                    <div className="text-medium-emphasis small">Created At</div>
+                    <div className="fs-5 fw-semibold">{formatDate(vm.data?.createdAt)}</div>
+                </div>
+            </CCol>
+        </CRow>
+        {/* <InvoicePreview /> */}
 
-        <h3>product: {vm.data?.user.name}</h3>
-        <h3>transactionInvoices:{vm.data?.transactionInvoices.map((product: any) =>
-            <div key={product.productId}>product: {product.quantity},{product.sumPrice},{product.product.name},{product.product.price},{product.product.productCode},</div>)}</h3> */}
+
+        {vm.data?.transaction.map((transactionItem: any) => <ContentCardLayout title={`Transactions Detail - ${transactionItem?.id}`} key={transactionItem?.id} smallTitle>
+            <CRow>
+                <CCol sm={3}>
+                    <div className="border-start border-start-4 border-start-info py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Is Invoiced</div>
+                        <div className="fs-5 fw-semibold">{transactionItem?.isInvoiced}</div>
+                    </div>
+                </CCol>
+                <CCol sm={3}>
+                    <div className="border-start border-start-4 border-start-info py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Transaction Type</div>
+                        <div className="fs-5 fw-semibold">{transactionItem?.type}</div>
+                    </div>
+                </CCol>
+                <CCol sm={3}>
+                    <div className="border-start border-start-4 border-start-info py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Created At</div>
+                        <div className="fs-5 fw-semibold">{formatDate(transactionItem?.createdAt)}</div>
+                    </div>
+                </CCol>
+                <CCol sm={3}>
+                    <div className="border-start border-start-4 border-start-info py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Updated At</div>
+                        <div className="fs-5 fw-semibold">{formatDate(transactionItem?.updatedAt)}</div>
+                    </div>
+                </CCol>
+            </CRow>
+
+            <CRow>
+                <CCol sm={3}>
+                    <div className="border-start border-start-4 border-start-primary py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Input By</div>
+                        <div className="fs-5 fw-semibold">{transactionItem?.user.name}</div>
+                    </div>
+                </CCol>
+                <CCol sm={3}>
+                    <div className="border-start border-start-4 border-start-primary py-1 px-3 mb-3">
+                        <div className="text-medium-emphasis small">Total Price</div>
+                        <div className="fs-5 fw-semibold">{formatToIdrCurrency(transactionItem?.totalPrice)}</div>
+                    </div>
+                </CCol>
+            </CRow>
+            <hr className='mb-4' />
+
+            <section>
+                <h3 className=''>Products In Transaction</h3>
+                <CSmartTable
+                    columns={vm.columns}
+                    items={transactionItem?.transactionProducts}
+                    scopedColumns={{
+                        name: (item: any) => <td className=''>{item.product.name}</td>,
+                        productCode: (item: any) => <td className=''>{item.product.productCode}</td>,
+                        price: (item: any) => <td className=''>{formatToIdrCurrency(item.product.price)}</td>,
+                        sumPrice: (item: any) => <td className=''>{formatToIdrCurrency(item.sumPrice)}</td>,
+                    }}
+                    tableProps={{
+                        className: 'add-this-class',
+                        responsive: true,
+                        striped: true,
+                        hover: true,
+                    }}
+                />
+            </section>
+        </ContentCardLayout>)}
     </ContentCardLayout>
 }
