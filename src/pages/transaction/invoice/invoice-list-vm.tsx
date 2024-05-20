@@ -10,6 +10,10 @@ export default function useTransactionInvoiceVm() {
             label: `Invoice Date`
         },
         {
+            key: 'invoiceGrandTotalPrice',
+            label: `Grand Total Price`
+        },
+        {
             key: 'actions',
             filter: false,
             sorter: false,

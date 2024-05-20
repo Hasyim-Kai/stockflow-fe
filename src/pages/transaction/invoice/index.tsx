@@ -6,6 +6,7 @@ import ContentCardLayout from 'src/layout/ContentCardLayout'
 import { formatDate } from 'src/utils/helper/date'
 import useTransactionInvoiceVm from './invoice-list-vm'
 import { useGetAllTransactionInvoiceQuery } from 'src/api/domain/transaction/invoice'
+import { formatToIdrCurrency } from 'src/utils/helper/currency'
 
 export default function TransactionInvoicePage() {
     const vm = useTransactionInvoiceVm()
@@ -18,6 +19,7 @@ export default function TransactionInvoicePage() {
             itemsPerPage={10}
             scopedColumns={{
                 createdAt: (item: any) => <td className=''>{formatDate(item.createdAt)}</td>,
+                invoiceGrandTotalPrice: (item: any) => <td className=''>{formatToIdrCurrency(item.invoiceGrandTotalPrice)}</td>,
                 actions: (item: any) => <td>
                     <CCol className="py-2 d-flex gap-3">
                         <Link to={`detail/${item.id}`}>

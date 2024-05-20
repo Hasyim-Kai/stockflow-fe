@@ -14,8 +14,8 @@ export default function DetailTransactionInvoicePage() {
         <CRow className='my-3'>
             <CCol sm={`auto`}>
                 <div className="border-start border-start-4 border-start-primary py-1 px-3 mb-3">
-                    <div className="text-medium-emphasis small">Outlet</div>
-                    <div className="fs-5 fw-semibold">{vm.data?.outlet.name} - {vm.data?.outlet.address}</div>
+                    <div className="text-medium-emphasis small">Grand Total Price</div>
+                    <div className="fs-5 fw-semibold">{formatToIdrCurrency(vm.data?.invoiceGrandTotalPrice)}</div>
                 </div>
             </CCol>
             <CCol sm={`auto`}>
