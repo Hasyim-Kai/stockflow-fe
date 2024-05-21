@@ -2,7 +2,7 @@ import { Document, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
 import { formatToIdrCurrency } from 'src/utils/helper/currency';
 import { formatDate } from 'src/utils/helper/date';
 
-const InvoicePreview = ({ invoiceData }: { invoiceData: any }) => {
+const InvoicePdf = ({ invoiceData }: { invoiceData: any }) => {
     const styles = StyleSheet.create({
         page: { fontSize: 11, paddingTop: 20, paddingLeft: 40, paddingRight: 40, lineHeight: 1.5, display: 'flex', flexDirection: 'column' },
 
@@ -78,13 +78,8 @@ const InvoicePreview = ({ invoiceData }: { invoiceData: any }) => {
         <View style={styles.divider}></View>
     </>
 
-    const GrandTotalPrice = () => <View style={{ textAlign: 'right', marginTop: 15 }}>
-        <View style={styles.reportTitle}><Text>Grand Total : </Text></View>
-        <View style={styles.reportTitle}>
-            <Text>
-                {formatToIdrCurrency(invoiceData?.invoiceGrandTotalPrice)}
-            </Text>
-        </View>
+    const GrandTotalPrice = () => <View style={{ marginTop: 20 }}>
+        <View style={styles.reportTitle}><Text>Grand Total : {formatToIdrCurrency(invoiceData?.invoiceGrandTotalPrice)}</Text></View>
     </View>
 
     const Table = ({ transactionItem }: any) => <>
@@ -158,4 +153,4 @@ const InvoicePreview = ({ invoiceData }: { invoiceData: any }) => {
     </Document>
 }
 
-export default InvoicePreview
+export default InvoicePdf
