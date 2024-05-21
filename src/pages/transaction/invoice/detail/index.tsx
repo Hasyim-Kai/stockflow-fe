@@ -1,6 +1,10 @@
-import { CCol, CRow, CSmartTable } from '@coreui/react-pro'
+import { cilCloudDownload } from '@coreui/icons'
+import CIcon from '@coreui/icons-react'
+import { CButton, CCol, CRow, CSmartTable } from '@coreui/react-pro'
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import BackBtn from 'src/components/global/button/back-btn'
 import ContentCardLayout from 'src/layout/ContentCardLayout'
+import InvoicePreview from 'src/services/pdf/invoice'
 import { formatToIdrCurrency } from 'src/utils/helper/currency'
 import { formatDate } from 'src/utils/helper/date'
 import useDetailTransactionInvoiceVm from './invoice-detail-vm'
@@ -8,9 +12,20 @@ import useDetailTransactionInvoiceVm from './invoice-detail-vm'
 export default function DetailTransactionInvoicePage() {
     const vm = useDetailTransactionInvoiceVm()
 
-    const header = <CCol xs={`auto`} className='ms-auto'><BackBtn /></CCol>
+    const header = <CCol xs={`auto`} className='ms-auto d-flex gap-3'>
+        {vm.isSuccess && <PDFDownloadLink document={<InvoicePreview invoiceData={vm.data} />}
+            fileName={`Transaction Invoice - ${formatDate(vm.data?.createdAt)} - ID ${vm.data?.id}.pdf`}>
+            <CButton color="primary">
+                <CIcon className='me-2' icon={cilCloudDownload} />
+                Download PDF
+            </CButton>
+        </PDFDownloadLink>}
+        <BackBtn />
+    </CCol>
 
     return <ContentCardLayout title='Invoice Transactions Detail' topRightSection={header} isLoading={vm.isLoading} isError={vm.isError}>
+        {/* {vm.isSuccess && <InvoicePreview invoiceData={vm.data} />} */}
+
         <CRow className='my-3'>
             <CCol sm={`auto`}>
                 <div className="border-start border-start-4 border-start-primary py-1 px-3 mb-3">
@@ -25,7 +40,6 @@ export default function DetailTransactionInvoicePage() {
                 </div>
             </CCol>
         </CRow>
-        {/* <InvoicePreview /> */}
 
 
         {vm.data?.transaction.map((transactionItem: any) => <ContentCardLayout title={`Transactions Detail - ${transactionItem?.id}`} key={transactionItem?.id} smallTitle>

@@ -25,10 +25,10 @@ export default function useDetailTransactionInvoiceVm() {
         },
     ]
     const { id } = useParams();
-    const { isLoading, isError, data } = useGetTransactionInvoiceQuery(id || `1`)
+    const { isLoading, isError, data, isSuccess } = useGetTransactionInvoiceQuery(id || `1`)
 
     return {
-        columns, isLoading, isError, data,
+        columns, isLoading, isError, isSuccess, data,
 
 
     }
