@@ -116,6 +116,11 @@ export const ownerRoutes = employeeRoutes.concat([
   // TRANSACTION INVOICE
   { path: '/transaction/invoice', name: 'Transaction Invoice', element: lazy(() => import('src/pages/transaction/invoice')) },
   { path: '/transaction/invoice/detail/:id', name: 'Detail Transaction Invoice', element: lazy(() => import('src/pages/transaction/invoice/detail')) },
+  // SECURITY-CCTV
+  { path: '/security/cctv', name: 'CCTV', element: lazy(() => import('src/pages/security/cctv')) },
+  { path: '/security/cctv/add', name: 'Add CCTV', element: lazy(() => import('src/pages/security/cctv/add')) },
+  { path: '/security/cctv/edit/:id', name: 'Edit CCTV', element: lazy(() => import('src/pages/security/cctv/edit')) },
+  { path: '/security/cctv/detail/:id', name: 'Detail CCTV', element: lazy(() => import('src/pages/security/cctv/detail')) },
 ])
 
 export const adminRoutes = ownerRoutes.concat([

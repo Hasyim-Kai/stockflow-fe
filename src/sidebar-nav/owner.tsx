@@ -1,8 +1,12 @@
-import { cilDollar, cilDrink, cilPuzzle, cilUser } from '@coreui/icons'
+import { cilCamera, cilDollar, cilDrink, cilPuzzle, cilUser } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-import { CNavGroup, CNavItem } from '@coreui/react-pro'
+import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
 
 export const ownerNav = [
+    {
+        component: CNavTitle,
+        name: 'Konsinyasi App',
+    },
     {
         component: CNavGroup,
         name: 'Master Data',
@@ -40,5 +44,15 @@ export const ownerNav = [
                 icon: <CIcon icon={cilDollar} customClassName="nav-icon" />,
             },
         ],
+    },
+    {
+        component: CNavTitle,
+        name: 'Security',
+    },
+    {
+        component: CNavItem,
+        name: 'CCTV',
+        to: 'security/cctv',
+        icon: <CIcon icon={cilCamera} customClassName="nav-icon" />,
     },
 ]

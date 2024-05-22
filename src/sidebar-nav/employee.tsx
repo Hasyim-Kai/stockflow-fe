@@ -1,8 +1,12 @@
 import { cilDollar, cilDrink, cilPuzzle } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-import { CNavGroup, CNavItem } from '@coreui/react-pro'
+import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
 
 export const employeeNav = [
+    {
+        component: CNavTitle,
+        name: 'Konsinyasi App',
+    },
     {
         component: CNavGroup,
         name: 'Master Data',
