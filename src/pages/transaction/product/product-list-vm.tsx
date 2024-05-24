@@ -39,7 +39,7 @@ export default function useTransactionProductVm() {
     const [notifyAdminOutletWithNoTransaction, { isLoading: isSubmitLoading }] = useNotifyAdminOutletWithNoTransactionMutation()
     const onNotifyAdminOutletWithNoTransaction = () => {
         ISwalConfirm(() => {
-            notifyAdminOutletWithNoTransaction(whatsappNumber).unwrap().then(() => { ISwalSuccess() })
+            notifyAdminOutletWithNoTransaction(String(whatsappNumber)).unwrap().then(() => { ISwalSuccess() })
                 .catch((err) => ISwalFail(handleErrMsg(err)))
         })
     }
