@@ -1,5 +1,9 @@
-export default function useTransactionProductVm() {
+import { useState } from "react"
+import { useNotifyAdminOutletWithNoTransactionMutation } from "src/api/domain/transaction/product"
+import { handleErrMsg } from "src/utils/helper/error-handler"
+import { ISwalConfirm, ISwalSuccess, ISwalFail } from "src/utils/helper/swal"
 
+export default function useTransactionProductVm() {
     const columns = [
         {
             key: 'type',
@@ -27,12 +31,18 @@ export default function useTransactionProductVm() {
         },
     ]
 
-    // const onOpenSeal = (id: string) => {
-    //     ISwalConfirm(() => {
-    //         openProductSeal({ id: id || `` }).unwrap().then(() => ISwalSuccess())
-    //             .catch(() => ISwalFail())
-    //     })
-    // }
+    const [whatsappNumber, setWhatsappNumber] = useState<number>()
+    const handleChangeWhatsappNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setWhatsappNumber(Number(event.target.value))
+    }
+
+    const [notifyAdminOutletWithNoTransaction, { isLoading: isSubmitLoading }] = useNotifyAdminOutletWithNoTransactionMutation()
+    const onNotifyAdminOutletWithNoTransaction = () => {
+        ISwalConfirm(() => {
+            notifyAdminOutletWithNoTransaction(whatsappNumber).unwrap().then(() => { ISwalSuccess() })
+                .catch((err) => ISwalFail(handleErrMsg(err)))
+        })
+    }
 
     // const onDel = (id: string) => {
     //     ISwalConfirm(() => {
@@ -43,7 +53,8 @@ export default function useTransactionProductVm() {
 
     return {
         columns,
-
+        onNotifyAdminOutletWithNoTransaction,
+        handleChangeWhatsappNumber,
 
     }
 }

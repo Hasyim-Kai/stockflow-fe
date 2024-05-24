@@ -1,18 +1,25 @@
-import { cilFindInPage, cilMinus, cilPlus } from '@coreui/icons'
+import { cilFindInPage } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-import { CBadge, CButton, CCol, CSmartTable } from '@coreui/react-pro'
+import { CButton, CCol, CSmartTable } from '@coreui/react-pro'
 import { Link } from 'react-router-dom'
+import { useGetAllTransactionInvoiceQuery } from 'src/api/domain/transaction/invoice'
+import ExperimentalBanner from 'src/components/global/banner/experimental-banner'
 import ContentCardLayout from 'src/layout/ContentCardLayout'
+import { formatToIdrCurrency } from 'src/utils/helper/currency'
 import { formatDate } from 'src/utils/helper/date'
 import useTransactionInvoiceVm from './invoice-list-vm'
-import { useGetAllTransactionInvoiceQuery } from 'src/api/domain/transaction/invoice'
-import { formatToIdrCurrency } from 'src/utils/helper/currency'
 
 export default function TransactionInvoicePage() {
     const vm = useTransactionInvoiceVm()
     const { isLoading, isError, data } = useGetAllTransactionInvoiceQuery()
 
     return <ContentCardLayout title='Invoice Transactions' isLoading={isLoading} isError={isError}>
+        <ExperimentalBanner>
+            <CButton color="primary" variant="outline" onClick={vm.onGenerateTransactionInvoice}>
+                Generate Invoice
+            </CButton>
+        </ExperimentalBanner>
+
         <CSmartTable
             columns={vm.columns}
             items={data}

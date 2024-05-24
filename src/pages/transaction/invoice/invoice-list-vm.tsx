@@ -1,5 +1,8 @@
-export default function useTransactionInvoiceVm() {
+import { useGenerateTransactionInvoiceMutation } from "src/api/domain/transaction/invoice"
+import { handleErrMsg } from "src/utils/helper/error-handler"
+import { ISwalConfirm, ISwalSuccess, ISwalFail } from "src/utils/helper/swal"
 
+export default function useTransactionInvoiceVm() {
     const columns = [
         {
             key: 'id',
@@ -20,9 +23,17 @@ export default function useTransactionInvoiceVm() {
         },
     ]
 
+    const [generateTransactionInvoice, { isLoading: isSubmitLoading }] = useGenerateTransactionInvoiceMutation()
+    const onGenerateTransactionInvoice = () => {
+        ISwalConfirm(() => {
+            generateTransactionInvoice().unwrap().then(() => { ISwalSuccess() })
+                .catch((err) => ISwalFail(handleErrMsg(err)))
+        })
+    }
+
     return {
         columns,
-
+        onGenerateTransactionInvoice,
 
     }
 }

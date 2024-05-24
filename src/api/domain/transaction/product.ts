@@ -28,6 +28,14 @@ const transactionProductApi = api.injectEndpoints({
             }),
             invalidatesTags: [`TransactionProduct`, `Product`]
         }),
+        notifyAdminOutletWithNoTransaction: builder.mutation<void, any>({
+            query: (values: { whatsappNumber: number }) => ({
+                url: 'wa/experimental',
+                method: 'POST',
+                body: values
+            }),
+            invalidatesTags: [`TransactionProduct`,]
+        }),
     })
 })
 
@@ -36,4 +44,5 @@ export const {
     useGetTransactionProductQuery,
     useCreateTransactionProductMutation,
     useEditTransactionProductMutation,
+    useNotifyAdminOutletWithNoTransactionMutation,
 } = transactionProductApi

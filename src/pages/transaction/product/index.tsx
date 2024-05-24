@@ -7,6 +7,8 @@ import ContentCardLayout from 'src/layout/ContentCardLayout'
 import { formatDate } from 'src/utils/helper/date'
 import useTransactionProductVm from './product-list-vm'
 import { formatToIdrCurrency } from 'src/utils/helper/currency'
+import ExperimentalBanner from 'src/components/global/banner/experimental-banner'
+import InputField from 'src/components/global/input/input-field'
 
 export default function TransactionProductPage() {
     const vm = useTransactionProductVm()
@@ -28,6 +30,13 @@ export default function TransactionProductPage() {
     </>
 
     return <ContentCardLayout title='Product Transactions' topRightSection={header} isLoading={isLoading} isError={isError}>
+        <ExperimentalBanner>
+            <InputField label='number' name='whatsappNumber' placeholder='0896xxxxxxx' type='number' onChange={vm.handleChangeWhatsappNumber} />
+            <CButton className='mt-3' color="primary" variant="outline" onClick={vm.onNotifyAdminOutletWithNoTransaction}>
+                Notify Admin Outlet With No Transactions
+            </CButton>
+        </ExperimentalBanner>
+
         <CSmartTable
             columns={vm.columns}
             items={data}

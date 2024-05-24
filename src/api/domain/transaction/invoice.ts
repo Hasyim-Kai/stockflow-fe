@@ -12,10 +12,18 @@ const transactionInvoiceApi = api.injectEndpoints({
             query: (id: string) => `transaction/Invoice/${id}`,
             providesTags: ['TransactionInvoice'],
         }),
+        generateTransactionInvoice: builder.mutation<void, void>({
+            query: () => ({
+                url: 'transaction/Invoice/experimental',
+                method: 'POST',
+            }),
+            invalidatesTags: [`TransactionInvoice`,]
+        }),
     })
 })
 
 export const {
     useGetAllTransactionInvoiceQuery,
     useGetTransactionInvoiceQuery,
+    useGenerateTransactionInvoiceMutation,
 } = transactionInvoiceApi
