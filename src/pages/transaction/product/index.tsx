@@ -31,7 +31,7 @@ export default function TransactionProductPage() {
 
     return <ContentCardLayout title='Product Transactions' topRightSection={header} isLoading={isLoading} isError={isError}>
         <ExperimentalBanner>
-            <InputField label='number' name='whatsappNumber' placeholder='0896xxxxxxx' type='number' onChange={vm.handleChangeWhatsappNumber} />
+            <InputField label='Admin Number' name='whatsappNumber' placeholder='0896xxxxxxx' type='number' onChange={vm.handleChangeWhatsappNumber} />
             <CButton className='mt-3' color="primary" variant="outline" onClick={vm.onNotifyAdminOutletWithNoTransaction}>
                 Notify Admin Outlet With No Transactions
             </CButton>
