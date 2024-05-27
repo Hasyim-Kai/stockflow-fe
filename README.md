@@ -1,3 +1,39 @@
+# Konsinyasi Documentation
+This project use Node 16 and NPM 8.19.4 version
+
+#### How to Init this project
+``` bash
+$ yarn
+```
+#### How to start
+``` bash
+$ yarn start
+```
+#### How to build
+``` bash
+$ yarn build
+```
+#### How to serve
+``` bash
+$ yarn serve
+```
+
+
+#### Project Folder Structure
+```
+coreui-pro-react-admin-template
+├── api/            # for api call based on each domain
+├── store/          # for redux toolkit and rtk query initiation
+├── utils/          # contain helper function to ease diplaying & processing data
+├── sidebar-nav/    # contain sidebar nav item based on each role
+├── pages/          # contain pages for each routes, the page folder structure 
+                    follow Next js   pages folder practices
+├── component/      # For the basic component
+│   └── global/     # Basic component for global use
+```
+
+
+
 # CoreUI PRO React Admin Template v4
 
 CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
