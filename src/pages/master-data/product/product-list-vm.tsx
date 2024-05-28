@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDelProductMutation, useGetAllProductQuery, } from 'src/api/domain/master-data/product';
+import { useDelProductMutation, useGetAllProductQuery, useGetTop5SoldProductQuery, } from 'src/api/domain/master-data/product';
 import { handleErrMsg } from 'src/utils/helper/error-handler';
 import { ISwalConfirm, ISwalFail, ISwalSuccess } from 'src/utils/helper/swal';
 
@@ -34,7 +34,8 @@ export default function useProductVm() {
             sorter: false,
         },
     ]
-    const { isLoading, isError, data } = useGetAllProductQuery()
+    const { isLoading: isLoadingTop5SoldProduct, isError: isErrorTop5SoldProduct, data: dataTop5SoldProduct } = useGetTop5SoldProductQuery()
+    const { isLoading: isLoadingAllProduct, isError: isErrorAllProduct, data: dataAllProduct } = useGetAllProductQuery()
     const [delProduct, { }] = useDelProductMutation()
     const [isSoldActive, setIsSoldActive] = useState(false)
     const handleToggleSold = () => {
@@ -49,11 +50,31 @@ export default function useProductVm() {
 
     function filterSoldOrNotSold(): any[] {
         if (isSoldActive) {
-            return data.filter((product: any) => product.openedQuantity > 0)
+            return dataAllProduct.filter((product: any) => product.openedQuantity > 0)
         } else if (isNotSoldActive) {
-            return data.filter((product: any) => product.openedQuantity === 0)
+            return dataAllProduct.filter((product: any) => product.openedQuantity === 0)
         } else {
-            return data
+            return dataAllProduct
+        }
+    }
+
+    function convertTop5SoldProductDataToChartDataInput() {
+        const labels: string[] = []
+        const data: number[] = []
+
+        dataTop5SoldProduct?.forEach((product: any) => {
+            labels.push(product.name)
+            data.push(product.openedQuantity)
+        });
+
+        return {
+            labels, datasets: [
+                {
+                    label: 'Most Sold Product',
+                    backgroundColor: '#2b7cff',
+                    data,
+                },
+            ],
         }
     }
 
@@ -67,8 +88,9 @@ export default function useProductVm() {
     return {
         onDel, columns,
         isSoldActive, handleToggleSold, isNotSoldActive, handleToggleNotSold,
-        isLoading, isError, data,
-        filterSoldOrNotSold,
+        isLoadingTop5SoldProduct, isErrorTop5SoldProduct, dataTop5SoldProduct,
+        isLoadingAllProduct, isErrorAllProduct, dataAllProduct,
+        filterSoldOrNotSold, convertTop5SoldProductDataToChartDataInput
 
 
 

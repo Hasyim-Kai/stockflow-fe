@@ -8,6 +8,10 @@ const productApi = api.injectEndpoints({
             query: () => `product`,
             providesTags: ['Product'],
         }),
+        getTop5SoldProduct: builder.query<any, void>({
+            query: () => `product/top-5`,
+            providesTags: ['Product'],
+        }),
         getAllProductOptionList: builder.query<any, void>({
             query: () => `product`,
             providesTags: ['Product'],
@@ -47,6 +51,7 @@ const productApi = api.injectEndpoints({
 
 export const {
     useGetAllProductQuery,
+    useGetTop5SoldProductQuery,
     useGetAllProductOptionListQuery,
     useGetProductQuery,
     useCreateProductMutation,

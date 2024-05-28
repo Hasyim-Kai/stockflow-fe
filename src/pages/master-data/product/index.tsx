@@ -1,5 +1,6 @@
 import { cilCheck, cilPencil, cilTrash } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
+import { CChartBar } from '@coreui/react-chartjs'
 import { CButton, CCardTitle, CCol, CRow, CSmartTable } from '@coreui/react-pro'
 import { Link } from 'react-router-dom'
 import ContentFetchingLayout from 'src/layout/ContentFetchingLayout'
@@ -26,53 +27,61 @@ export default function MasterDataProductPage() {
         </CCol>
     </CRow>
 
-    return <ContentFetchingLayout header={header} isLoading={vm.isLoading} isError={vm.isError}>
-        <CSmartTable
-            columns={vm.columns}
-            items={vm.filterSoldOrNotSold()}
-            itemsPerPage={10}
-            scopedColumns={{
-                price: (item: any) => <td className=''>{formatToIdrCurrency(item.price)}</td>,
-                actions: (item: any) => {
-                    return <td>
-                        <CCol className="py-2 d-flex gap-3">
-                            {/* <Link to={`detail/${item.id}`}>
+    return <>
+        <ContentFetchingLayout header={header} isLoading={vm.isLoadingAllProduct} isError={vm.isErrorAllProduct}>
+            <CSmartTable
+                columns={vm.columns}
+                items={vm.filterSoldOrNotSold()}
+                itemsPerPage={10}
+                scopedColumns={{
+                    price: (item: any) => <td className=''>{formatToIdrCurrency(item.price)}</td>,
+                    actions: (item: any) => {
+                        return <td>
+                            <CCol className="py-2 d-flex gap-3">
+                                {/* <Link to={`detail/${item.id}`}>
                                     <CButton color="primary" variant="outline" shape="square" size="sm">
                                         <CIcon icon={cilFindInPage} />
                                     </CButton>
                                 </Link> */}
-                            <Link to={`edit/${item.id}`}>
-                                <CButton color="warning" variant="outline" shape="square" size="sm">
-                                    <CIcon icon={cilPencil} />
+                                <Link to={`edit/${item.id}`}>
+                                    <CButton color="warning" variant="outline" shape="square" size="sm">
+                                        <CIcon icon={cilPencil} />
+                                    </CButton>
+                                </Link>
+                                <CButton color="danger" variant="outline" shape="square" size="sm"
+                                    onClick={() => vm.onDel(item.id)}>
+                                    <CIcon icon={cilTrash} />
                                 </CButton>
-                            </Link>
-                            <CButton color="danger" variant="outline" shape="square" size="sm"
-                                onClick={() => vm.onDel(item.id)}>
-                                <CIcon icon={cilTrash} />
-                            </CButton>
-                        </CCol>
-                    </td>
+                            </CCol>
+                        </td>
 
-                },
-            }}
-            tableProps={{
-                className: 'add-this-class',
-                responsive: true,
-                striped: true,
-                hover: true,
-            }}
-            tableBodyProps={{
-                className: 'align-middle'
-            }}
-            pagination
-            columnFilter
-            columnSorter
-            footer
-            itemsPerPageSelect
-            activePage={1}
-            cleaner
-            clickableRows
-            tableFilter
-        />
-    </ContentFetchingLayout>
+                    },
+                }}
+                tableProps={{
+                    className: 'add-this-class',
+                    responsive: true,
+                    striped: true,
+                    hover: true,
+                }}
+                tableBodyProps={{
+                    className: 'align-middle'
+                }}
+                pagination
+                columnFilter
+                columnSorter
+                footer
+                itemsPerPageSelect
+                activePage={1}
+                cleaner
+                clickableRows
+                tableFilter
+            />
+        </ContentFetchingLayout>
+
+        <ContentFetchingLayout isLoading={vm.isLoadingTop5SoldProduct} isError={vm.isErrorTop5SoldProduct}>
+            <h2 className='ms-3 mb-3' >Top 5 Sold Product</h2>
+            <hr />
+            <CChartBar data={vm.convertTop5SoldProductDataToChartDataInput()} />
+        </ContentFetchingLayout>
+    </>
 }

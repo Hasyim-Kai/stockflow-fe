@@ -19,7 +19,7 @@ import { UserRoleEnum } from 'src/utils/constant/user-role.ts'
 import { adminNav } from 'src/sidebar-nav/admin.tsx'
 import { ownerNav } from 'src/sidebar-nav/owner.tsx'
 import { employeeNav } from 'src/sidebar-nav/employee.tsx'
-// import { coreuiFeaturesNav } from 'src/sidebar-nav/core-ui-features.tsx'
+import { coreuiFeaturesNav } from 'src/sidebar-nav/core-ui-features.tsx'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
