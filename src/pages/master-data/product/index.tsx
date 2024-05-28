@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import ContentFetchingLayout from 'src/layout/ContentFetchingLayout'
 import { formatToIdrCurrency } from 'src/utils/helper/currency'
 import useProductVm from './product-list-vm'
+import ExperimentalBanner from 'src/components/global/banner/experimental-banner'
 
 export default function MasterDataProductPage() {
     const vm = useProductVm()
@@ -19,16 +20,19 @@ export default function MasterDataProductPage() {
                 <CButton color="primary" variant={`outline`} onClick={vm.handleToggleSold}>{vm.isSoldActive && <CIcon icon={cilCheck} />} Sold</CButton>
                 <CButton color="primary" variant={`outline`} onClick={vm.handleToggleNotSold}>{vm.isNotSoldActive && <CIcon icon={cilCheck} />} Not Sold</CButton>
             </div>
-            <Link to={`add`}>
-                <CButton color="primary">
-                    + Add New Data
-                </CButton>
-            </Link>
         </CCol>
     </CRow>
 
     return <>
         <ContentFetchingLayout header={header} isLoading={vm.isLoadingAllProduct} isError={vm.isErrorAllProduct}>
+            <ExperimentalBanner>
+                <Link to={`add`}>
+                    <CButton color="primary">
+                        + Add New Data
+                    </CButton>
+                </Link>
+            </ExperimentalBanner>
+
             <CSmartTable
                 columns={vm.columns}
                 items={vm.filterSoldOrNotSold()}

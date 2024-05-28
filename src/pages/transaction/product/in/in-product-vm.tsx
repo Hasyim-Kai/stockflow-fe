@@ -5,7 +5,7 @@ import { useCreateTransactionProductMutation } from 'src/api/domain/transaction/
 import useStoreHelper from 'src/store/helper'
 import { TransactionProductEnum } from 'src/utils/constant/general'
 import { handleErrMsg } from 'src/utils/helper/error-handler'
-import { ISwalConfirm, ISwalSuccess, ISwalFail } from 'src/utils/helper/swal'
+import { ISwalConfirm, ISwalFail, ISwalSuccess } from 'src/utils/helper/swal'
 import { array, number, object, string } from 'yup'
 
 interface TransactionProductDynamicFormType {
@@ -52,7 +52,6 @@ export default function useTransactionInProductVm() {
             copiedValues.productList[formItemIndex].sumPrice = selectedProduct?.price * formItem?.quantity
         })
         const dto = {
-            userId: userInfo.userId,
             type: TransactionProductEnum.IN,
             products: copiedValues.productList
         }

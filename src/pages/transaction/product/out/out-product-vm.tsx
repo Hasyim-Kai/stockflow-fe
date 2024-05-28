@@ -57,7 +57,6 @@ export default function useTransactionOutProductVm() {
                 copiedValues.productList[formItemIndex].sumPrice = selectedProduct?.price * formItem?.quantity
             })
             const dto = {
-                userId: userInfo.userId,
                 type: TransactionProductEnum.OUT,
                 products: copiedValues.productList
             }

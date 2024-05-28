@@ -21,11 +21,7 @@ export default function TransactionProductPage() {
                     <CIcon icon={cilMinus} /> Out Stock
                 </CButton>
             </Link>
-            <Link to={`in`}>
-                <CButton color="primary">
-                    <CIcon icon={cilPlus} /> In Stock
-                </CButton>
-            </Link>
+
         </CCol>
     </>
 
@@ -35,6 +31,13 @@ export default function TransactionProductPage() {
             <CButton className='mt-3' color="primary" variant="outline" onClick={vm.onNotifyAdminOutletWithNoTransaction}>
                 Notify Admin Outlet With No Transactions
             </CButton>
+            <hr />
+            <h3>Navigate to Stock In Page</h3>
+            <Link to={`in`}>
+                <CButton color="primary">
+                    <CIcon icon={cilPlus} /> In Stock
+                </CButton>
+            </Link>
         </ExperimentalBanner>
 
         <CSmartTable

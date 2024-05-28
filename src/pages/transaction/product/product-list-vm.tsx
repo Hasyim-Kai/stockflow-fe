@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNotifyAdminOutletWithNoTransactionMutation } from "src/api/domain/transaction/product"
 import { handleErrMsg } from "src/utils/helper/error-handler"
-import { ISwalConfirm, ISwalSuccess, ISwalFail } from "src/utils/helper/swal"
+import { ISwalConfirm, ISwalFail, ISwalSuccess } from "src/utils/helper/swal"
 
 export default function useTransactionProductVm() {
     const columns = [
