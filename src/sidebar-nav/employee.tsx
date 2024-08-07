@@ -5,7 +5,7 @@ import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
 export const employeeNav = [
     {
         component: CNavTitle,
-        name: 'Konsinyasi App',
+        name: 'SockFlow App',
     },
     {
         component: CNavGroup,

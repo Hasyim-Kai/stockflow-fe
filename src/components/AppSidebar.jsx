@@ -44,7 +44,8 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <img alt="logo" src={SentiumLogo} height={40} />
+        {/* <img alt="logo" src={SentiumLogo} height={40} /> */}
+        <h2>Logo</h2>
         {/* <p>{userRole}-{UserRoleEnum.ADMIN}</p> */}
         <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />
       </CSidebarBrand>
