@@ -1,181 +1,70 @@
-# Konsinyasi Documentation
-This project use Node 16 and NPM 8.19.4 version
+# :fallen_leaf: Stockflow App
 
-#### How to Init this project
-``` bash
-$ yarn
-```
-#### How to start
-``` bash
-$ yarn start
-```
-#### How to build
-``` bash
-$ yarn build
-```
-#### How to serve
-``` bash
-$ yarn serve
-```
+Stockflow is a Web App that Monitor on Management of the Product stock, transactions and the auto generated invoice.
 
+# Back End : [Stockflow-BE](https://github.com/Hasyim-Kai/stockflow-be)
+
+### Tech Stack :trumpet:
+
+- React
+- Javascript + Typescript
+- Redux Toolkit
+- Tailwind
+- Bootstrap
 
 #### Project Folder Structure
+
 ```
-coreui-pro-react-admin-template
+stockflow-folder-structure
 ├── api/            # for api call based on each domain
 ├── store/          # for redux toolkit and rtk query initiation
 ├── utils/          # contain helper function to ease diplaying & processing data
 ├── sidebar-nav/    # contain sidebar nav item based on each role
-├── pages/          # contain pages for each routes, the page folder structure 
+├── pages/          # contain pages for each routes, the page folder structure
                     follow Next js   pages folder practices
 ├── component/      # For the basic component
 │   └── global/     # Basic component for global use
 ```
 
+## :camera: Screenshots
 
+## :star: Master Data User
 
-# CoreUI PRO React Admin Template v4
+<img src="./screenshots/master-data-user.jpeg" alt="Landing Page" width="500">
+<br>
 
-CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
+## :star: Master Data Product & Form
 
-## Table of Contents
+<img src="./screenshots/master-data-product.jpeg" alt="Landing Page" width="500">
+<img src="./screenshots/master-data-product-form.jpeg" alt="Landing Page" width="500">
+<br>
 
-* [Versions](#versions)
-* [Quick Start](#quick-start)
-* [Installation](#installation)
-* [Basic usage](#basic-usage)
-* [What's included](#whats-included)
-* [Documentation](#documentation)
-* [Versioning](#versioning)
-* [Creators](#creators)
-* [Community](#community)
-* [Copyright and License](#copyright-and-license)
+## :star: Transaction Prodcut List
 
-## Versions
+<img src="./screenshots/transaction-prodcut.jpeg" alt="Login Page" width="500">
+<br>
 
-* [CoreUI Pro Bootstrap Admin Template](https://coreui.io/pro/)
-* [CoreUI Pro Angular Admin Template](https://coreui.io/pro/angular)
-* [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
-* [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
+## :star: Transaction Prodcut Form
 
-## Quick Start
+<img src="./screenshots/transaction-prodcut-form.jpeg" alt="Login Page" width="500">
+<br>
 
-- [Download the latest release](https://github.com/coreui/coreui-pro-react-admin-template/archive/refs/heads/main.zip)
-- Clone the repo: `git clone https://github.com/coreui/coreui-pro-react-admin-template.git`
+## :star: Transaction Prodcut Detail
 
-### Instalation
+<img src="./screenshots/transaction-prodcut-detail.jpeg" alt="Login Page" width="500">
+<br>
 
-``` bash
-$ npm install
-```
+## :star: Transaction Invoice List
 
-or
+<img src="./screenshots/transaction-invoice.png" alt="Login Page" width="500">
+<br>
 
-``` bash
-$ yarn install
-```
+## :star: Transaction Invoice Detail
 
-### Basic usage
+<img src="./screenshots/transaction-invoice-detail.jpeg" alt="Login Page" width="500">
+<br>
 
-``` bash
-# dev server with hot reload at http://localhost:3000
-$ npm start 
+## :star: Transaction Invoice PDF Generated
 
-# if you use Node 17+ use this command instead of `npm start`
-$ npm run start:n17 
-```
-
-or 
-
-``` bash
-# dev server with hot reload at http://localhost:3000
-$ yarn start
-
-# if you use Node 17+ use this command instead of `yarn start`
-$ yarn start:n17 
-```
-
-Navigate to [http://localhost:3000](http://localhost:3000). The app will automatically reload if you change any of the source files.
-
-#### Build
-
-Run `build` to build the project. The build artifacts will be stored in the `build/` directory.
-
-```bash
-# build for production with minification
-$ npm run build
-
-# if you use Node 17+ use this command instead of `build run build`
-$ npm run build:n17 
-```
-
-or
-
-```bash
-# build for production with minification
-$ yarn build
-
-# if you use Node 17+ use this command instead of `yarn build`
-$ yarn build:n17 
-```
-
-## What's included
-
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
-
-```
-coreui-pro-react-admin-template
-├── public/          # static files
-│   └── index.html   # html template
-│
-├── src/             # project root
-│   ├── assets/      # images, icons, etc.
-│   ├── components/  # common components - header, footer, sidebar, etc.
-│   ├── layouts/     # layout containers
-│   ├── scss/        # scss styles
-│   ├── views/       # application views
-│   ├── sidebar-nav  # sidebar navigation config
-│   ├── App.js
-│   ├── ...
-│   ├── index.js
-│   ├── routes.js    # routes config
-│   └── store.js     # template state example 
-│
-└── package.json
-```
-
-## Documentation
-
-The documentation for the CoreUI Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
-
-## Versioning
-
-For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
-
-See [the Releases section of our project](https://github.com/coreui/coreui-pro-react-admin-template/releases) for changelogs for each release version.
-
-## Creators
-
-**Łukasz Holeczek**
-* <https://twitter.com/lukaszholeczek>
-* <https://github.com/mrholek>
-* <https://github.com/coreui>
-
-**CoreUI team**
-* https://github.com/orgs/coreui/people
-
-## Community
-
-Get updates on CoreUI's development and chat with the project maintainers and community members.
-
-- Follow [@core_ui on Twitter](https://twitter.com/core_ui).
-- Read and subscribe to [CoreUI Blog](https://blog.coreui.ui/).
-
-## Copyright and License
-
-copyright 2023 creativeLabs Łukasz Holeczek.   
-
-You must have a valid license purchased to legally use this product for
-your projects.
-
-You can buy a license on our website https://coreui.io
+<img src="./screenshots/transaction-invoice-detail-pdf.jpeg" alt="Login Page" width="500">
+<br>
