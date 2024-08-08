@@ -2,15 +2,21 @@
 
 Stockflow is a Web App that Monitor on Management of the Product stock, transactions and the auto generated invoice.
 
-# Back End : [Stockflow-BE](https://github.com/Hasyim-Kai/stockflow-be)
-
-### Tech Stack :trumpet:
+### FE Tech Stack :trumpet:
 
 - React
 - Javascript + Typescript
 - Redux Toolkit
 - Tailwind
 - Bootstrap
+
+### BE Tech Stack :trumpet:
+
+- Nest Js
+- Typescript
+- Postgresql
+
+# Back End : [Stockflow-BE](https://github.com/Hasyim-Kai/stockflow-be)
 
 #### Project Folder Structure
 
